@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="style.css" />
+        <link rel="stylesheet" href="responsive.css" />
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+        />
+        <title>Document</title>
+    </head>
+    <body>
+        <div id="blur"></div>
+        <div class="bg__dark__blue">
+            <div class="container">
+                <header>
+                    <a href="index.html">
+                        <img src="img/logo.svg" alt="" />
+                    </a>
+                    <ul class="navigation">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li class="has__dropdown">
+                            <a href="services.html">Services</a>
+                            <div class="dropdown__container">
+                                <ul class="dropdown">
+                                    <li><a href="#">TV Wall Mounting</a></li>
+                                    <li>
+                                        <a href="#">TV Dismount & Remount</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">TV Shelves Installation</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="has__dropdown">
+                            <a href="location.html">Locations</a>
+                            <div class="dropdown__container">
+                                <div>
+                                    <h3>Washington</h3>
+                                    <ul class="dropdown">
+                                        <li><a href="#">Seattle</a></li>
+                                        <li><a href="#">Bellevue</a></li>
+                                        <li><a href="#">Redmond</a></li>
+                                        <li><a href="#">Tacoma</a></li>
+                                        <li><a href="#">Lakewood</a></li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <h3>North Carolina</h3>
+                                    <ul class="dropdown">
+                                        <li><a href="#">Charlotte</a></li>
+                                        <li><a href="#">Monroe</a></li>
+                                        <li><a href="#">Indian Trail</a></li>
+                                        <li><a href="#">Pineville</a></li>
+                                        <li><a href="#">Waxhaw</a></li>
+                                        <li><a href="#">Weddington</a></li>
+                                        <li><a href="#">Matthews</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                    <ul class="social">
+                        <li>
+                            <a class="tel" href="tel:+1 808 7778899"
+                                >+1 808 7778899</a
+                            >
+                        </li>
+                        <li><a href="#" class="btn">Book now</a></li>
+                        <li class="menu"><img src="img/menu.svg" alt="" /></li>
+
+                        <li class="icon">
+                            <a href="#">
+                                <img src="img/header_icon_1.svg" alt="" />
+                            </a>
+                        </li>
+                        <li class="icon">
+                            <a href="#">
+                                <img src="img/facebook.svg" alt="" />
+                            </a>
+                        </li>
+                    </ul>
+                </header>
+                <div id="sideMenu" class="side__menu">
+                    <div>
+                        <ul>
+                            <li><a href="#">Home</a></li>
+                            <li><a href="#">About</a></li>
+                            <li class="has__dropdown__rwd">
+                                <a href="#">Services &rAarr;</a>
+                                <div class="dropdown__container__rwd">
+                                    <ul class="dropdown__rwd">
+                                        <li>
+                                            <a href="#">TV Wall Mounting</a>
+                                        </li>
+                                        <li>
+                                            <a href="#"
+                                                >TV Dismount & Remount</a
+                                            >
+                                        </li>
+                                        <li>
+                                            <a href="#"
+                                                >TV Shelves Installation</a
+                                            >
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="has__dropdown__rwd">
+                                <a href="#">Locations &rAarr;</a>
+                                <div class="dropdown__container__rwd">
+                                    <div
+                                        class="dropdown__container__rwd__inner"
+                                    >
+                                        <div>
+                                            <h3>Washington</h3>
+                                            <ul class="dropdown__rwd">
+                                                <li><a href="#">Seattle</a></li>
+                                                <li>
+                                                    <a href="#">Bellevue</a>
+                                                </li>
+                                                <li><a href="#">Redmond</a></li>
+                                                <li><a href="#">Tacoma</a></li>
+                                                <li>
+                                                    <a href="#">Lakewood</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div>
+                                            <h3>North Carolina</h3>
+                                            <ul class="dropdown__rwd">
+                                                <li>
+                                                    <a href="#">Charlotte</a>
+                                                </li>
+                                                <li><a href="#">Monroe</a></li>
+                                                <li>
+                                                    <a href="#">Indian Trail</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#">Pineville</a>
+                                                </li>
+                                                <li><a href="#">Waxhaw</a></li>
+                                                <li>
+                                                    <a href="#">Weddington</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#">Matthews</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                        <button class="close__menu">X</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <section class="hero">
+                <div class="content">
+                    <img src="img/hero.png" alt="" />
+                    <div>
+                        <h1>Rapid TV Mounting Services</h1>
+                        <div class="content__inner">
+                            <p>Got a new TV or just moved?</p>
+                            <p>
+                                Let the pros handle your TV mounting for a
+                                flawless setup!
+                            </p>
+                            <a href="book.html" class="btn">Book now</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <div class="container__sm">
+            <section class="find__your__city">
+                <h3 class="section__title section__title__sm">
+                    Find your city
+                </h3>
+                <form>
+                    <input
+                        type="text"
+                        placeholder="find your place by name or ZIP-code"
+                    />
+                    <button>
+                        <img src="img/right_arrow.svg" alt="" />
+                    </button>
+                </form>
+            </section>
+            <section class="projects">
+                <h3 class="section__title">Projects</h3>
+                <div class="projects__grid">
+                    <div class="div1">
+                        <img src="img/grid-1.png" alt="" />
+                    </div>
+                    <div class="div2">
+                        <img src="img/grid-2.png" alt="" />
+                    </div>
+                    <div class="div3">
+                        <img src="img/grid-3.png" alt="" />
+                    </div>
+                    <div class="div4">
+                        <img src="img/grid-4.png" alt="" />
+                    </div>
+                    <div class="div5">
+                        <img src="img/grid-5.png" alt="" />
+                    </div>
+                    <div class="div6">
+                        <img src="img/grid-6.png" alt="" />
+                    </div>
+                    <div class="div7">
+                        <img src="img/grid-7.png" alt="" />
+                    </div>
+                    <div class="div8">
+                        <img src="img/grid-8.png" alt="" />
+                    </div>
+                </div>
+                <a href="#" class="btn">View all</a>
+            </section>
+            <section class="mount__tv__size">
+                <h3 class="section__title">We mount any TV size!</h3>
+                <p>
+                    No matter your TV size, from compact screens up to 60″ to
+                    massive displays over 80″, our professional mounting
+                    services guarantee a secure and stylish installation. We
+                    handle all brands and sizes, ensuring the perfect setup for
+                    any room. Enjoy a clutter-free space and the best viewing
+                    experience with our expert TV mounting solutions. Whether
+                    it’s for a cozy bedroom, a spacious living room, or a
+                    dedicated home theater, we’ve got you covered.
+                </p>
+                <ul>
+                    <li>
+                        <img src="img/size1.png" alt="" />
+                        <p>Up to 60″</p>
+                    </li>
+                    <li>
+                        <img src="img/size2.png" alt="" />
+                        <p>60″ – 80″</p>
+                    </li>
+                    <li>
+                        <img src="img/size3.png" alt="" />
+                        <p>Over 80″</p>
+                    </li>
+                </ul>
+            </section>
+        </div>
+        <section class="services">
+            <div class="container__sm">
+                <h3 class="section__title">Services</h3>
+                <ul>
+                    <li>
+                        <img src="img/service (1).png" alt="" />
+                        <p>TV wall mounting</p>
+                    </li>
+                    <li>
+                        <img src="img/service (2).png" alt="" />
+                        <p>Soundbar installation</p>
+                    </li>
+                    <li>
+                        <img src="img/service (3).png" alt="" />
+                        <p>TV dismount & remount</p>
+                    </li>
+                    <li>
+                        <img src="img/service (4).png" alt="" />
+                        <p>Wall shelf installation</p>
+                    </li>
+                    <li>
+                        <img src="img/service (5).png" alt="" />
+                        <p>Home cinema installation</p>
+                    </li>
+                </ul>
+            </div>
+        </section>
+        <div class="partners__slider">
+            <div class="swiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <img src="img/partner (1).png" alt="" />
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="img/partner (2).png" alt="" />
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="img/partner (3).png" alt="" />
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="img/partner (4).png" alt="" />
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="img/partner (5).png" alt="" />
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="img/partner (6).png" alt="" />
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="img/partner (7).png" alt="" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="bg__gradient">
+            <div class="container__sm">
+                <section class="what__makes__us__special">
+                    <h3 class="section__title">What Makes Us Special?</h3>
+                    <p>
+                        Flawlessly mounted TVs, setting us apart in the
+                        industry.
+                    </p>
+                    <ul>
+                        <li>
+                            <img src="img/special (1).png" alt="" />
+                            <div class="text">
+                                <h4>Professional installation</h4>
+                                <p>
+                                    Experts ensure secure, damage-free mounting,
+                                    building trust with precision.
+                                </p>
+                            </div>
+                        </li>
+                        <li>
+                            <img src="img/special (3).png" alt="" />
+                            <div class="text">
+                                <h4>Customized solutions</h4>
+                                <p>
+                                    Tailored setups cater to individual needs,
+                                    optimizing viewing pleasure.
+                                </p>
+                            </div>
+                        </li>
+                        <li>
+                            <img src="img/special (2).png" alt="" />
+                            <div class="text">
+                                <h4>Customer service</h4>
+                                <p>
+                                    Clear communication and fast support ensure
+                                    satisfaction and referrals.
+                                </p>
+                            </div>
+                        </li>
+                    </ul>
+                </section>
+            </div>
+        </div>
+        <div class="container__sm">
+            <section class="schedule">
+                <h3 class="section__title">
+                    Schedule your mounting in easy steps
+                </h3>
+                <ul>
+                    <li>
+                        <img src="img/schedule (3).png" alt="" />
+                        <h4>Click on “Book now”</h4>
+                        <p>
+                            Start by clicking the "Book Now" button to begin
+                            your scheduling process.
+                        </p>
+                    </li>
+                    <li>
+                        <img src="img/schedule (4).png" alt="" />
+                        <h4>Fill the form</h4>
+                        <p>
+                            Enter your details and service requirements in the
+                            form provided.
+                        </p>
+                    </li>
+                    <li>
+                        <img src="img/schedule (1).png" alt="" />
+                        <h4>Pick a time</h4>
+                        <p>
+                            Choose a convenient time for our professionals to
+                            visit and mount your TV.
+                        </p>
+                    </li>
+                </ul>
+            </section>
+
+            <section class="feedback">
+                <div class="swiper">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <div class="feedback__item">
+                                <div class="feedback__item__header">
+                                    <div>
+                                        <img
+                                            src="https://images.ctfassets.net/h6goo9gw1hh6/2sNZtFAWOdP1lmQ33VwRN3/24e953b920a9cd0ff2e1d587742a2472/1-intro-photo-final.jpg?w=1200&h=992&fl=progressive&q=70&fm=jpg"
+                                            alt=""
+                                        />
+                                        <div>
+                                            <p>Alugh Gjana</p>
+                                            <span>2024-07-16</span>
+                                        </div>
+                                    </div>
+                                    <img
+                                        src="https://cdn4.iconfinder.com/data/icons/logos-brands-7/512/google_logo-google_icongoogle-512.png"
+                                        alt=""
+                                    />
+                                </div>
+                                <div class="feedback___item__content">
+                                    <p>Great service !! Thank you guys!!</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="feedback__item">
+                                <div class="feedback__item__header">
+                                    <div>
+                                        <img
+                                            src="https://images.ctfassets.net/h6goo9gw1hh6/2sNZtFAWOdP1lmQ33VwRN3/24e953b920a9cd0ff2e1d587742a2472/1-intro-photo-final.jpg?w=1200&h=992&fl=progressive&q=70&fm=jpg"
+                                            alt=""
+                                        />
+                                        <div>
+                                            <p>Alugh Gjana</p>
+                                            <span>2024-07-16</span>
+                                        </div>
+                                    </div>
+                                    <img
+                                        src="https://cdn4.iconfinder.com/data/icons/logos-brands-7/512/google_logo-google_icongoogle-512.png"
+                                        alt=""
+                                    />
+                                </div>
+                                <div class="feedback___item__content">
+                                    <p>Great service !! Thank you guys!!</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="feedback__item">
+                                <div class="feedback__item__header">
+                                    <div>
+                                        <img
+                                            src="https://images.ctfassets.net/h6goo9gw1hh6/2sNZtFAWOdP1lmQ33VwRN3/24e953b920a9cd0ff2e1d587742a2472/1-intro-photo-final.jpg?w=1200&h=992&fl=progressive&q=70&fm=jpg"
+                                            alt=""
+                                        />
+                                        <div>
+                                            <p>Alugh Gjana</p>
+                                            <span>2024-07-16</span>
+                                        </div>
+                                    </div>
+                                    <img
+                                        src="https://cdn4.iconfinder.com/data/icons/logos-brands-7/512/google_logo-google_icongoogle-512.png"
+                                        alt=""
+                                    />
+                                </div>
+                                <div class="feedback___item__content">
+                                    <p>Great service !! Thank you guys!!</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="feedback__item">
+                                <div class="feedback__item__header">
+                                    <div>
+                                        <img
+                                            src="https://images.ctfassets.net/h6goo9gw1hh6/2sNZtFAWOdP1lmQ33VwRN3/24e953b920a9cd0ff2e1d587742a2472/1-intro-photo-final.jpg?w=1200&h=992&fl=progressive&q=70&fm=jpg"
+                                            alt=""
+                                        />
+                                        <div>
+                                            <p>Alugh Gjana</p>
+                                            <span>2024-07-16</span>
+                                        </div>
+                                    </div>
+                                    <img
+                                        src="https://cdn4.iconfinder.com/data/icons/logos-brands-7/512/google_logo-google_icongoogle-512.png"
+                                        alt=""
+                                    />
+                                </div>
+                                <div class="feedback___item__content">
+                                    <p>Great service !! Thank you guys!!</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <img class="slider-prev" src="img/slider-prev.png" alt="" />
+                <img class="slider-next" src="img/slider-next.png" alt="" />
+            </section>
+        </div>
+        <footer>
+            <div class="container">
+                <div class="footer__inner">
+                    <p>MyWall © 2020-2024</p>
+                    <ul>
+                        <li><img src="img/footer (2).png" alt="" /></li>
+                        <li><img src="img/footer (1).png" alt="" /></li>
+                        <li><img src="img/footer (3).png" alt="" /></li>
+                    </ul>
+                </div>
+            </div>
+        </footer>
+        <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+        <script src="app.js"></script>
+    </body>
+</html>

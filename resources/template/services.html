@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="style.css" />
+        <link rel="stylesheet" href="responsive.css" />
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+        />
+        <title>Document</title>
+    </head>
+    <body>
+        <div id="blur"></div>
+        <div class="bg__dark__blue">
+            <div class="container">
+                <header>
+                    <a href="#">
+                        <img src="img/logo.svg" alt="" />
+                    </a>
+                    <ul class="navigation">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">About</a></li>
+                        <li class="has__dropdown">
+                            <a href="#">Services</a>
+                            <div class="dropdown__container">
+                                <ul class="dropdown">
+                                    <li><a href="#">TV Wall Mounting</a></li>
+                                    <li>
+                                        <a href="#">TV Dismount & Remount</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">TV Shelves Installation</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="has__dropdown">
+                            <a href="#">Locations</a>
+                            <div class="dropdown__container">
+                                <div>
+                                    <h3>Washington</h3>
+                                    <ul class="dropdown">
+                                        <li><a href="#">Seattle</a></li>
+                                        <li><a href="#">Bellevue</a></li>
+                                        <li><a href="#">Redmond</a></li>
+                                        <li><a href="#">Tacoma</a></li>
+                                        <li><a href="#">Lakewood</a></li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <h3>North Carolina</h3>
+                                    <ul class="dropdown">
+                                        <li><a href="#">Charlotte</a></li>
+                                        <li><a href="#">Monroe</a></li>
+                                        <li><a href="#">Indian Trail</a></li>
+                                        <li><a href="#">Pineville</a></li>
+                                        <li><a href="#">Waxhaw</a></li>
+                                        <li><a href="#">Weddington</a></li>
+                                        <li><a href="#">Matthews</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                    <ul class="social">
+                        <li>
+                            <a class="tel" href="tel:+1 808 7778899"
+                                >+1 808 7778899</a
+                            >
+                        </li>
+                        <li><a href="#" class="btn">Book now</a></li>
+                        <li class="menu"><img src="img/menu.svg" alt="" /></li>
+
+                        <li class="icon">
+                            <a href="#">
+                                <img src="img/header_icon_1.svg" alt="" />
+                            </a>
+                        </li>
+                        <li class="icon">
+                            <a href="#">
+                                <img src="img/facebook.svg" alt="" />
+                            </a>
+                        </li>
+                    </ul>
+                </header>
+                <div id="sideMenu" class="side__menu">
+                    <div>
+                        <ul>
+                            <li><a href="#">Home</a></li>
+                            <li><a href="#">About</a></li>
+                            <li class="has__dropdown__rwd">
+                                <a href="#">Services &rAarr;</a>
+                                <div class="dropdown__container__rwd">
+                                    <ul class="dropdown__rwd">
+                                        <li>
+                                            <a href="#">TV Wall Mounting</a>
+                                        </li>
+                                        <li>
+                                            <a href="#"
+                                                >TV Dismount & Remount</a
+                                            >
+                                        </li>
+                                        <li>
+                                            <a href="#"
+                                                >TV Shelves Installation</a
+                                            >
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="has__dropdown__rwd">
+                                <a href="#">Locations &rAarr;</a>
+                                <div class="dropdown__container__rwd">
+                                    <div
+                                        class="dropdown__container__rwd__inner"
+                                    >
+                                        <div>
+                                            <h3>Washington</h3>
+                                            <ul class="dropdown__rwd">
+                                                <li><a href="#">Seattle</a></li>
+                                                <li>
+                                                    <a href="#">Bellevue</a>
+                                                </li>
+                                                <li><a href="#">Redmond</a></li>
+                                                <li><a href="#">Tacoma</a></li>
+                                                <li>
+                                                    <a href="#">Lakewood</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div>
+                                            <h3>North Carolina</h3>
+                                            <ul class="dropdown__rwd">
+                                                <li>
+                                                    <a href="#">Charlotte</a>
+                                                </li>
+                                                <li><a href="#">Monroe</a></li>
+                                                <li>
+                                                    <a href="#">Indian Trail</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#">Pineville</a>
+                                                </li>
+                                                <li><a href="#">Waxhaw</a></li>
+                                                <li>
+                                                    <a href="#">Weddington</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#">Matthews</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                        <button class="close__menu">X</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <section class="services__banner">
+            <div class="container">
+                <ul class="breadcrumb">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Services</a></li>
+                    <li><a href="#">TV Wall Mounting</a></li>
+                </ul>
+                <div class="services__banner__inner">
+                    <h1>Services</h1>
+                    <div>
+                        <ul>
+                            <li>TV Wall Mounting</li>
+                            <li>TV Dismount & Remount</li>
+                            <li>TV Shelves Installation</li>
+                        </ul>
+                        <div>
+                            <h2>Professional TV Mounting Service</h2>
+                            <ul>
+                                <li>
+                                    Installation on all types of walls & above
+                                    the fireplace
+                                </li>
+                                <li>Indoor and outdoor TV mounting</li>
+                                <li>TV dismount and remount</li>
+                                <li>TV dismount and remount</li>
+                                <li>Indoor and outdoor TV mounting</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="services">
+            <div class="container__sm">
+                <h3 class="section__title">Services</h3>
+                <ul>
+                    <li>
+                        <img src="img/service (1).png" alt="" />
+                        <p>TV wall mounting</p>
+                    </li>
+                    <li>
+                        <img src="img/service (2).png" alt="" />
+                        <p>Soundbar installation</p>
+                    </li>
+                    <li>
+                        <img src="img/service (3).png" alt="" />
+                        <p>TV dismount & remount</p>
+                    </li>
+                    <li>
+                        <img src="img/service (4).png" alt="" />
+                        <p>Wall shelf installation</p>
+                    </li>
+                    <li>
+                        <img src="img/service (5).png" alt="" />
+                        <p>Home cinema installation</p>
+                    </li>
+                </ul>
+            </div>
+        </section>
+        <div class="partners__slider">
+            <div class="swiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <img src="img/partner (1).png" alt="" />
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="img/partner (2).png" alt="" />
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="img/partner (3).png" alt="" />
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="img/partner (4).png" alt="" />
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="img/partner (5).png" alt="" />
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="img/partner (6).png" alt="" />
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="img/partner (7).png" alt="" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container__sm">
+            <section class="mount__tv__space">
+                <h3 class="section__title">
+                    What is the best type of TV mount for my space?
+                </h3>
+                <p>
+                    No matter your TV size, from compact screens up to 60″ to
+                    massive displays over 80″, our professional mounting
+                    services guarantee a secure and stylish installation. We
+                    handle all brands and sizes, ensuring the perfect setup for
+                    any room. Enjoy a clutter-free space and the best viewing
+                    experience with our expert TV mounting solutions. Whether
+                    it’s for a cozy bedroom, a spacious living room, or a
+                    dedicated home theater, we’ve got you covered.
+                </p>
+                <ul>
+                    <li>
+                        <img src="img/tv1.svg" alt="" />
+                        <h3>Fixed mount</h3>
+                        <p>A fixed mount is a basic, stationary bracket that holds the TV flat against the wall. This is a simple and low-profile option, ideal for rooms where the viewing angle doesn’t need adjustment.</p>
+                    </li>
+                    <li>
+                        <img src="img/tv2.svg" alt="" />
+                        <h3>Tilting mount</h3>
+
+                        <p>A tilting mount allows you to angle the TV vertically, typically downwards. This is useful for reducing glare from lights or windows and for mounting the TV higher on the wall while maintaining a comfortable viewing angle.</p>
+                    </li>
+                    <li>
+                        <img src="img/tv3.svg" alt="" />
+                        <h3>Full-motion mount</h3>
+                        <p>A full-motion or articulating mount offers the most flexibility, allowing you to tilt, swivel, and extend the TV away from the wall. This option provides maximum adjustability, making it suitable for rooms with unconventional layouts or where you want to be able to adjust the TV position frequently.</p>
+                    </li>
+                </ul>
+            </section>
+
+            <section class="projects bg__size">
+                <h3 class="section__title">Projects</h3>
+                <div class="projects__grid">
+                    <div class="div1">
+                        <img src="img/grid-1.png" alt="" />
+                    </div>
+                    <div class="div2">
+                        <img src="img/grid-2.png" alt="" />
+                    </div>
+                    <div class="div3">
+                        <img src="img/grid-3.png" alt="" />
+                    </div>
+                    <div class="div4">
+                        <img src="img/grid-4.png" alt="" />
+                    </div>
+                    <div class="div5">
+                        <img src="img/grid-5.png" alt="" />
+                    </div>
+                    <div class="div6">
+                        <img src="img/grid-6.png" alt="" />
+                    </div>
+                    <div class="div7">
+                        <img src="img/grid-7.png" alt="" />
+                    </div>
+                    <div class="div8">
+                        <img src="img/grid-8.png" alt="" />
+                    </div>
+                </div>
+            </section>
+        </div>
+        <section class="faq">
+            <h3 class="section__title">Frequently asked questions</h3>
+            <div class="faq__div">
+                <div class="faq__item">
+                    <div class="faq__header" onclick="toggleFAQ(this)">
+                        <span class="faq__number">#1</span>
+                        <h3 class="faq__title">What is your service?</h3>
+                        <span class="faq__icon">+</span>
+                    </div>
+                    <div class="faq__content">
+                        <p>We provide high-quality service for TV wall mounting, dismounting, and remounting.</p>
+                    </div>
+                </div>
+            
+                <div class="faq__item">
+                    <div class="faq__header" onclick="toggleFAQ(this)">
+                        <span class="faq__number">#2</span>
+                        <h3 class="faq__title">Do you offer installation services?</h3>
+                        <span class="faq__icon">+</span>
+                    </div>
+                    <div class="faq__content">
+                        <p>Yes, we offer installation services for TV shelves and other related equipment.</p>
+                    </div>
+                </div>
+            </div>
+            
+        </section>
+
+        <footer>
+            <div class="container">
+                <div class="footer__inner">
+                    <p>MyWall © 2020-2024</p>
+                    <ul>
+                        <li><img src="img/footer (2).png" alt="" /></li>
+                        <li><img src="img/footer (1).png" alt="" /></li>
+                        <li><img src="img/footer (3).png" alt="" /></li>
+                    </ul>
+                </div>
+            </div>
+        </footer>
+        <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+        <script src="app.js"></script>
+    </body>
+</html>
