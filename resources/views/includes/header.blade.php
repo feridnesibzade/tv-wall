@@ -2,8 +2,8 @@
 <div class="bg__dark__blue">
     <div class="container">
         <header>
-            <a href="index.html">
-                <img src="/storage/{{ $settings->logo }}" alt="" />
+            <a href="/">
+                <img src="/storage/{{ $settings->logo }}" alt="{{ config('app.name') }}" />
             </a>
             <ul class="navigation">
                 <li><a href="/">Home</a></li>

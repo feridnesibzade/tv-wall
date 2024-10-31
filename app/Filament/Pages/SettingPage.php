@@ -35,14 +35,15 @@ class SettingPage extends Page implements HasForms
     {
         $row = Setting::find(1) ?? null;
         $this->form->fill([
-            'logo' => $row->title ?? null,
+            'logo' => $row->logo ?? null,
             'phone' => $row->phone ?? null,
-            'social_medias' => array_map(fn ($item) => [
-                'title' => $item->title ?? null,
-                'link' => $item->link ?? null,
-                'icon' => $item->icon ?? null
-            ], json_decode($row->detail ?? '') ?? []),
+            'social_medias' => array_map(fn($item) => [
+                'title' => $item['title'] ?? null,
+                'link' => $item['link'] ?? null,
+                'icon' => $item['icon'] ?? null
+            ], $row->social_medias ?? []),
         ]);
+        ;
     }
 
     public function form(Form $form): Form

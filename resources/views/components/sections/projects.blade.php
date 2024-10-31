@@ -1,9 +1,11 @@
 <section class="projects">
     <h3 class="section__title">Projects</h3>
     <div class="projects__grid">
-        @foreach ($data['projects'] as $key => $project)
+        @foreach ($data['projects']->images as $key => $image)
             <div class="div{{ $key }}">
-                <img src="/storage/{{ $project->image }}" alt="" />
+                <a href="/storage/{{ $image }}" data-fancybox="gallery">
+                    <img src="/storage/{{ $image }}" alt="" />
+                </a>
             </div>
         @endforeach
         {{-- <div class="div2">

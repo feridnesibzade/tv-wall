@@ -17,10 +17,14 @@ class ManageCities extends ManageRecords
             Actions\CreateAction::make()->mutateFormDataUsing(function (array $data): array {
                 $data['detail'] = json_encode($data['detail']);
                 $data['slug'] = \Str::slug($data['title']);
+
+                dd($data['zip_code']);
+
                 // $data['slug'] = \Str::slug($data['title']);
                 return $data;
             }),
         ];
+
     }
 
 

@@ -1,0 +1,49 @@
+@extends('layouts.app')
+
+@section('content')
+    <section class="projects__banner">
+        <div class="container">
+            <ul class="breadcrumb">
+                <li><a href="/">Home</a></li>
+                <li><a href="/projects">Projects</a></li>
+                @if (isset($data['project']))
+                    <li><a href="#">{{ $data['project']->title }}</a></li>
+                @endif
+            </ul>
+            <div class="location__banner__inner">
+                <h1>Projects</h1>
+                <div>
+                    <div class="location__banner__inner__right">
+                        @if (!empty($data['projects']))
+                            @foreach ($data['projects'] as $year => $projects)
+                                <p>{{ $year }}</p>
+                                <ul>
+                                    @foreach ($projects as $project)
+                                        <li><a href="/projects/{{ $project->id }}">{{ $project->title }}</a></li>
+                                    @endforeach
+                                </ul>
+                            @endforeach
+                        @endif
+                    </div>
+                    @if (isset($data['project']))
+                        <div class="location__banner__inner__left">
+                            <h2 style="width: auto !important;">
+                                {{ $data['project']->city->city . '. ' . $data['project']->year }}
+                            </h2>
+                            {!! $data['project']->description !!}
+                            <div class="projects__grid">
+                                @foreach ($data['project']->images as $key => $image)
+                                    <div class="image-{{ $key }}">
+                                        <a href="/storage/{{ $image }}" data-fancybox="gallery">
+                                            <img src="/storage/{{ $image }}" alt="" />
+                                        </a>
+                                    </div>
+                                @endforeach
+                            </div>
+                        </div>
+                    @endif
+                </div>
+            </div>
+        </div>
+    </section>
+@endsection

@@ -5,6 +5,8 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\ProjectResource\Pages;
 use App\Models\Project;
 use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\RichEditor;
+use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -26,8 +28,23 @@ class ProjectResource extends Resource
         return $form
             ->schema([
                 TextInput::make('title'),
-                FileUpload::make('image')
+                TextInput::make('year'),
+
+                Select::make('city_id')
+                    ->relationship(name: 'city', titleAttribute: 'city')
+                    ->native(false),
+
+                Select::make('wall_mounts')
+                    ->multiple()
+                    ->relationship(name: 'wallMounts', titleAttribute: 'title')
+                    ->native(false)
+                    ->preload(),
+
+                RichEditor::make('description'),
+
+                FileUpload::make('images')
                     ->image()
+                    ->multiple()
                     ->disk('public')
                     ->directory('projects'),
             ]);
@@ -39,7 +56,7 @@ class ProjectResource extends Resource
             ->columns([
                 TextColumn::make('id'),
                 TextColumn::make('title'),
-                ImageColumn::make('image'),
+                ImageColumn::make('city.city'),
 
             ])
             ->filters([
@@ -54,6 +71,14 @@ class ProjectResource extends Resource
                     Tables\Actions\DeleteBulkAction::make(),
                 ]),
             ]);
+    }
+
+    public static function mutateFormDataBeforeSave(array $data): array
+    {
+        // Ensure the 'detail' field is properly json_encoded
+        // $data['detail'] = json_encode($data['detail']);
+        dd($data);
+        return $data;
     }
 
     public static function getPages(): array

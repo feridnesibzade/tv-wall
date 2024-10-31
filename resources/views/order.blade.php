@@ -17,7 +17,7 @@
 
 
     <div class="bg__book" x-data="Booking" x-init="triggerFindCity" @click.window="addItemOnGlobalClick">
-        <div class="container">
+        <div class="container" style="min-height: 61vh; position: relative;">
             <section class="find__your__city">
                 <h3 class="section__title section__title__sm">
                     Find your city
@@ -25,7 +25,7 @@
                 <form @submit.prevent="findCity">
                     <div style="display: flex; flex-direction: column">
                         <div style="display: flex;gap:10px">
-                            <input type="text" placeholder="find your place by name or ZIP-code"
+                            <input type="text" style="z-index: 999" placeholder="find your place by name or ZIP-code"
                                 x-model="formData.zip_code" />
                             <button type="submit" style="z-index: 999">
                                 <img src="/storage/img/right_arrow.svg" alt="" />
@@ -38,6 +38,49 @@
                 </form>
             </section>
             <div x-show="validZipCode" x-transition>
+
+                <div class="section__tv__card" id="bill" style="width: 300px; ">
+                    <div>
+                        <h3>TV Wall Mounting</h3>
+                        <ul>
+                            <template x-for="(item, index) in bill" :key="index">
+                                <li x-text="item"></li>
+                            </template>
+                        </ul>
+                    </div>
+                    <div x-show="formData.date">
+                        <img src="/storage/img/calendar.svg" />
+                        <div>
+                            <p x-text="formData.date"></p>
+                            <p x-text="formData.time.join(', ')"></p>
+                        </div>
+                    </div>
+
+                    <div>
+                        <img x-show="formData.address" src="/storage/img/location.svg" />
+                        <div>
+                            <p x-text="formData.address">56, f5, Santa Clara, CA Obama str. 75</p>
+                        </div>
+                    </div>
+                    <div>
+                        <div>
+                            <p>Subtotal</p>
+                            <h4 x-text="amount">$00.00</h4>
+                        </div>
+                        <div>
+                            <p>Tax Charge</p>
+
+                            <h4>$5</h4>
+                        </div>
+                        <div>
+                            <p>Estimated Total</p>
+
+                            <h4 x-text="totalAmount">$457.33</h4>
+                        </div>
+                    </div>
+                </div>
+
+
 
                 @include('components.book.tv-size')
 
@@ -64,58 +107,31 @@
 
                         @include('components.book.extra-services')
                     </div>
-                    <div class="section__tv__card" style="width: 300px">
-                        <div>
-                            <h3>TV Wall Mounting</h3>
-                            <ul>
-                                <template x-for="(item, index) in bill" :key="index">
-                                    <li x-text="item"></li>
-                                </template>
-                            </ul>
-                        </div>
-                        <div x-show="formData.date">
-                            <img src="/storage/img/calendar.svg" />
-                            <div>
-                                <p x-text="formData.date">Sunday, September 29th</p>
-                                <p x-text="formData.time.join(', ')">10:00 AM</p>
-                            </div>
-                        </div>
 
-                        <div>
-                            {{-- <img src="./storage/img/location.svg" />
-                            <div>
-                                <p>56, f5, Santa Clara, CA Obama str. 75</p>
-                            </div> --}}
-                        </div>
-                        <div>
-                            <div>
-                                <p>Subtotal</p>
-
-                                <h4 x-text="amount">$00.00</h4>
-                            </div>
-                            <div>
-                                <p>Tax Charge</p>
-
-                                <h4>$5</h4>
-                            </div>
-                            <div>
-                                <p>Estimated Total</p>
-
-                                <h4 x-text="totalAmount">$457.33</h4>
-                            </div>
-                        </div>
-                    </div>
                 </div>
+
 
 
                 @include('components.book.date-time-picker')
 
+
                 <!-- Service Address -->
                 <section class="find__your__city">
                     <h3 class="section__title section__title__sm">Service Address</h3>
-                    <form @submit.prevent="submitBooking">
+                    <div class="sectionBlck">
                         <input type="text" placeholder="Address" x-model="formData.address" />
-                        <div class="address">Apt, Unit, Floor</div>
+                        <input type="text" style="max-width: 20rem" x-model="formData.address_detail"
+                            placeholder="Apt, Unit, Floor">
+                    </div>
+                </section>
+                <section class="find__your__city">
+                    <h3 class="section__title section__title__sm">Contact Info</h3>
+                    <form @submit.prevent="submitBooking">
+                        <input type="text" placeholder="Fullname" style="max-width:25rem;" x-model="formData.fullname" />
+                        <input type="text" style="max-width: 20rem" x-model="formData.phone"
+                            placeholder="formData.phone">
+                        <input type="text" style="max-width: 20rem" x-model="formData.email"
+                            placeholder="formData.email">
                         <button type="submit">
                             <img src="/storage/img/right_arrow.svg" alt="" />
                         </button>
@@ -165,7 +181,11 @@
                         },
                         date: '',
                         time: [],
-                        address: ''
+                        address: '',
+                        address_detail: '',
+                        fullname: '',
+                        phone: '',
+                        email: '',
                     },
                     amount: '$00.00',
                     totalAmount: '$00.00',
@@ -233,14 +253,7 @@
                                         timer: 10000
                                     });
                                 } else {
-                                    Swal.fire({
-                                        title: data.message,
-                                        icon: "success",
-                                        showConfirmButton: false,
-                                        timer: 5000
-                                    }).then(() => {
-                                        this.resetFormData()
-                                    });
+                                    window.location.href = '/book/success'
                                 }
                             })
                     },

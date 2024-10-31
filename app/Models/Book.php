@@ -17,6 +17,10 @@ class Book extends Model
         'date',
         'time',
         'address',
+        'address_detail',
+        'fullname',
+        'phone',
+        'email',
     ];
 
     public function city()

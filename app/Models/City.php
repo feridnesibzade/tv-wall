@@ -6,10 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class City extends Model
 {
-    public $fillable = ['city', 'slug', 'country_id', 'title', 'image', 'description', 'detail', 'zip_code'];
+    public $fillable = ['city', 'slug', 'country_id', 'title', 'description', 'detail'];
 
     protected $casts = [
         'detail' => 'array',
+        // 'zip_code' => 'array',
     ];
 
     protected static function booted()
@@ -28,4 +29,10 @@ class City extends Model
             }
         });
     }
+
+    public function zipCodes()
+    {
+        return $this->hasMany(ZipCode::class, 'city_id', 'id');
+    }
+
 }

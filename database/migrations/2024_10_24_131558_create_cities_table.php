@@ -5,8 +5,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class extends Migration {
     /**
      * Run the migrations.
      */
@@ -18,8 +17,8 @@ return new class extends Migration
             $table->string('city');
             $table->string('slug');
             $table->string('title');
-            $table->string('zip_code');
-            $table->string('image');
+            // $table->text('zip_code');
+            // $table->string('image');
             $table->text('description');
             $table->text('detail');
             $table->timestamps();

@@ -30,6 +30,10 @@ class BookRequest extends FormRequest
             'date' => 'required',
             'time' => 'required|array',
             'address' => 'required',
+            'address_detail' => 'required',
+            'fullname' => 'required',
+            'phone' => 'required',
+            'email' => 'required',
         ];
     }
 
@@ -44,6 +48,10 @@ class BookRequest extends FormRequest
             'date' => 'Date',
             'time' => 'Time',
             'address' => 'Address',
+            'address_detail' => 'Floor, Apartment',
+            'fullname' => 'Fullname',
+            'phone' => 'Phone',
+            'email' => 'E-mail',
         ];
     }
 }
