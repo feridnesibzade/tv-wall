@@ -39,6 +39,63 @@
             </section>
             <div x-show="validZipCode" x-transition>
 
+
+
+
+
+                @include('components.book.tv-size')
+
+                @include('components.book.wall-mount')
+
+                @include('components.book.wall-type')
+
+
+                <div class="section__tv__main">
+                    <div>
+                        <section class="section__tv">
+                            <h3>Can you help lift the TV?</h3>
+                            <div>
+                                <button type="button" :class="{ 'activeBtn': formData.liftAssistance.value === 1 }"
+                                    @click="formData.liftAssistance.value = 1; formData.liftAssistance.price = 0; formData.liftAssistance.title = 'I will help'">
+                                    I will help
+                                </button>
+                                <button type="button" :class="{ 'activeBtn': formData.liftAssistance.value === 2 }"
+                                    @click="formData.liftAssistance.value = 2; formData.liftAssistance.price = 5; formData.liftAssistance.title = 'Need an assistant'">
+                                    Need an assistant
+                                </button>
+                            </div>
+                        </section>
+
+                        @include('components.book.extra-services')
+                    </div>
+
+                </div>
+
+
+
+                @include('components.book.date-time-picker')
+
+
+                <!-- Service Address -->
+                <section class="find__your__city">
+                    <h3 class="section__title section__title__sm">Service Address</h3>
+                    <form class="sectionBlck">
+                        <input type="text" placeholder="Address" x-model="formData.address" />
+                        <input type="text" style="max-width: 20rem" x-model="formData.address_detail"
+                            placeholder="Apt, Unit, Floor">
+                    </form>
+                </section>
+                <section class="find__your__city">
+                    <h3 class="section__title section__title__sm">Contact Info</h3>
+                    <form @submit.prevent="submitBooking">
+                        <input type="text" placeholder="Fullname" style="max-width:25rem;" x-model="formData.fullname" />
+                        <input type="text" style="max-width: 20rem" x-model="formData.phone" placeholder="Phone">
+                        <input type="text" style="max-width: 20rem" x-model="formData.email" placeholder="E-mail">
+                        <button type="submit">
+                            <img src="/storage/img/right_arrow.svg" alt="" />
+                        </button>
+                    </form>
+                </section>
                 <div class="section__tv__card" id="bill" style="width: 300px; ">
                     <div>
                         <h3>TV Wall Mounting</h3>
@@ -79,64 +136,6 @@
                         </div>
                     </div>
                 </div>
-
-
-
-                @include('components.book.tv-size')
-
-                @include('components.book.wall-mount')
-
-                @include('components.book.wall-type')
-
-
-                <div class="section__tv__main">
-                    <div>
-                        <section class="section__tv">
-                            <h3>Can you help lift the TV?</h3>
-                            <div>
-                                <button type="button" :class="{ 'activeBtn': formData.liftAssistance.value === 1 }"
-                                    @click="formData.liftAssistance.value = 1; formData.liftAssistance.price = 0; formData.liftAssistance.title = 'I will help'">
-                                    I will help
-                                </button>
-                                <button type="button" :class="{ 'activeBtn': formData.liftAssistance.value === 2 }"
-                                    @click="formData.liftAssistance.value = 2; formData.liftAssistance.price = 5; formData.liftAssistance.title = 'Need an assistant'">
-                                    Need an assistant
-                                </button>
-                            </div>
-                        </section>
-
-                        @include('components.book.extra-services')
-                    </div>
-
-                </div>
-
-
-
-                @include('components.book.date-time-picker')
-
-
-                <!-- Service Address -->
-                <section class="find__your__city">
-                    <h3 class="section__title section__title__sm">Service Address</h3>
-                    <div class="sectionBlck">
-                        <input type="text" placeholder="Address" x-model="formData.address" />
-                        <input type="text" style="max-width: 20rem" x-model="formData.address_detail"
-                            placeholder="Apt, Unit, Floor">
-                    </div>
-                </section>
-                <section class="find__your__city">
-                    <h3 class="section__title section__title__sm">Contact Info</h3>
-                    <form @submit.prevent="submitBooking">
-                        <input type="text" placeholder="Fullname" style="max-width:25rem;" x-model="formData.fullname" />
-                        <input type="text" style="max-width: 20rem" x-model="formData.phone"
-                            placeholder="formData.phone">
-                        <input type="text" style="max-width: 20rem" x-model="formData.email"
-                            placeholder="formData.email">
-                        <button type="submit">
-                            <img src="/storage/img/right_arrow.svg" alt="" />
-                        </button>
-                    </form>
-                </section>
             </div>
         </div>
     </div>

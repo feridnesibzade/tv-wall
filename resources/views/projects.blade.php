@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <section class="projects__banner">
+    <section class="projects__banner" style="min-height: 83vh">
         <div class="container">
             <ul class="breadcrumb">
                 <li><a href="/">Home</a></li>
@@ -42,8 +42,38 @@
                             </div>
                         </div>
                     @endif
+
                 </div>
             </div>
+            @if (isset($data['project']))
+                {{-- <section class="mount__tv__size">
+                    <ul>
+                        @foreach ($data['project']->wallMounts as $row)
+                            <li>
+                                <img src="/storage/{{ $row->image }}" alt="" />
+                                <p>{{ $row->title }}</p>
+                            </li>
+                        @endforeach
+                    </ul>
+                </section> --}}
+            @endif
         </div>
     </section>
+    @if (isset($data['project']))
+        <div class="container__sm">
+            <section class="section__tv" style="z-index: 999">
+                <div class="section__tv__already">
+                    @foreach ($data['project']->wallMounts as $row)
+                        <button>
+                            @if ($row->image)
+                                <img src="/storage/{{ $row->image }}">
+                            @endif
+                            {{ $row->title }}
+                        </button>
+                    @endforeach
+
+                </div>
+            </section>
+        </div>
+    @endif
 @endsection

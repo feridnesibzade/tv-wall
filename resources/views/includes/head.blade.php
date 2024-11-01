@@ -21,13 +21,12 @@
         border: 1px solid #418DFF;
     }
 
-    .section__tv__card {
+    /* .section__tv__card {
         position: fixed;
         top: 10%;
-        /* width: 300px; */
         right: 50px;
         z-index: 99999;
-    }
+    } */
 </style>
 
 <body>
