@@ -185,6 +185,10 @@
                     bill: [],
                     error: false,
                     validZipCode: false,
+                    selectedDate: '',
+                    startHour: 7,
+                    availableTimes: [],
+                    currentDate: new Date(),
                     errorMessage: 'There is no department in your city.',
                     findCity() {
                         if (this.formData.zip_code) {
@@ -361,6 +365,30 @@
                         if ('{{ request()->zip_code }}') {
                             this.findCity()
                         }
+                    },
+                    updateAvailableTimes() {
+                        const selectedDateObj = new Date(this.selectedDate);
+                        const currentHour = this.currentDate.getHours();
+                        this.availableTimes = [];
+
+                        // Determine start hour based on the selected date
+                        let startHour = this.isToday(selectedDateObj) ?
+                            Math.max(this.startHour, currentHour) :
+                            this.startHour;
+
+                        // Populate available times from start hour to 23:00 (end of day)
+                        for (let hour = startHour; hour < 24; hour++) {
+                            this.availableTimes.push(this.formatHour(hour));
+                        }
+                    },
+                    isToday(date) {
+                        return date.toDateString() === this.currentDate.toDateString();
+                    },
+
+                    formatHour(hour) {
+                        const period = hour >= 12 ? 'pm' : 'am';
+                        const formattedHour = hour % 12 || 12;
+                        return `${formattedHour}:00 ${period}`;
                     }
                 }));
             });
