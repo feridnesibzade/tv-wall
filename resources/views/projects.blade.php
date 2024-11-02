@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <section class="projects__banner" style="min-height: 83vh">
+    <section class="services__banner" style="min-height: 83vh">
         <div class="container">
             <ul class="breadcrumb">
                 <li><a href="/">Home</a></li>

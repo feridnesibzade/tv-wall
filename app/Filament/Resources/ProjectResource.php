@@ -28,11 +28,11 @@ class ProjectResource extends Resource
         return $form
             ->schema([
                 TextInput::make('title'),
-                TextInput::make('year'),
+                TextInput::make('year')->required(),
 
                 Select::make('city_id')
                     ->relationship(name: 'city', titleAttribute: 'city')
-                    ->native(false),
+                    ->native(false)->required(),
 
                 Select::make('wall_mounts')
                     ->multiple()

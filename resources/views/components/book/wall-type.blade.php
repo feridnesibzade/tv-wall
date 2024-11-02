@@ -1,4 +1,4 @@
-<section class="section__tv" style="z-index: 999">
+<section class="section__tv" style="z-index: 100">
     <h3>Select a wall type</h3>
     <div>
         @foreach ($data['wallTypes'] as $row)

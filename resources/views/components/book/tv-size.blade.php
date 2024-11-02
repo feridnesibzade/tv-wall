@@ -1,4 +1,4 @@
-<section class="section__tv" style="z-index: 999">
+<section class="section__tv" style="z-index: 100">
     <h3>What size is your TV?</h3>
     <p>Please select the size of your TV from the options provided.</p>
     <div>

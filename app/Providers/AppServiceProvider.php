@@ -23,11 +23,11 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        View::composer('includes.*', function ($view) {
+        View::composer(['includes.*', 'order'], function ($view) {
             $view->with('settings', cache()->remember(
                 'settings',
                 now()->addWeeks(1),
-                fn () => Setting::first()
+                fn() => Setting::first()
             ));
         });
 
@@ -35,12 +35,12 @@ class AppServiceProvider extends ServiceProvider
             $view->with('services', cache()->remember(
                 'services',
                 now()->addWeeks(1),
-                fn () => Service::select('id', 'title', 'slug')->get()
+                fn() => Service::select('id', 'title', 'slug')->get()
             ));
             $view->with('locations', cache()->remember(
                 'locations',
                 now()->addWeeks(1),
-                fn () => Country::with('cities:id,title,slug,country_id')->get()
+                fn() => Country::with('cities:id,title,slug,country_id')->get()
             ));
         });
     }

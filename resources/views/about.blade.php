@@ -30,6 +30,24 @@
         </div>
     </section>
 
-    @include('components.sections.cities')
+    <div class="container">
+        <section class="cities__we__serve">
+            <h1 class="section__title">Cities we serve</h1>
+            <div>
+                <img class="location__banner" src="/storage/img/location.png" alt="" />
+                <ul>
+                    @foreach ($data['cities'] as $city)
+                        <li>
+                            <img src="/storage/{{ $city->image }}" alt="" />
+                            <p>{{ $city->title }}</p>
+                        </li>
+                    @endforeach
+                </ul>
+            </div>
+        </section>
+    </div>
+
+
+    {{-- @include('components.sections.cities') --}}
     @include('components.sections.find-city')
 @endsection

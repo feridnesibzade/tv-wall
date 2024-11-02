@@ -27,7 +27,7 @@ class CityResource extends Resource
     protected static ?string $model = City::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
-
+    protected static ?string $label = 'Districts';
     protected static ?string $navigationGroup = 'Pages';
 
     public static function form(Form $form): Form
@@ -40,7 +40,8 @@ class CityResource extends Resource
                 Select::make('country_id')
                     ->label('Country')
                     ->options(Country::all()->pluck('title', 'id'))
-                    ->searchable(),
+                    ->searchable()
+                    ->required(),
 
                 // TextInput::make('slug')
                 //     ->required()

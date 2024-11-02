@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\BookRequest;
 use App\Mail\OrderMail;
 use App\Models\About;
+use App\Models\AboutCity;
 use App\Models\BestTypeOfMount;
 use App\Models\Book;
 use App\Models\City;
@@ -12,6 +13,7 @@ use App\Models\Country;
 use App\Models\ExtraService;
 use App\Models\Feedback;
 use App\Models\Hero;
+use App\Models\Lifting;
 use App\Models\MountTvSize;
 use App\Models\Partner;
 use App\Models\Project;
@@ -44,7 +46,7 @@ class StaticController extends Controller
     public function about()
     {
         $data['about'] = About::first();
-        $data['cities'] = City::all();
+        $data['cities'] = AboutCity::all();
 
         return view('about', compact('data'));
     }
@@ -92,6 +94,7 @@ class StaticController extends Controller
         $data['wallMounts'] = WallMount::all();
         $data['wallTypes'] = WallType::all();
         $data['extraServices'] = ExtraService::all();
+        $data['lifting'] = Lifting::all();
 
         return view('order', compact('data'));
     }
@@ -113,9 +116,7 @@ class StaticController extends Controller
 
     public function createOrder(BookRequest $request)
     {
-
         try {
-
             $order = Book::create([
                 'city_id' => request()->city['id'],
                 'tv_size_id' => request()->tvSize['value'],
@@ -132,7 +133,6 @@ class StaticController extends Controller
                 'address' => request()->address,
                 'address_detail' => request()->address_detail,
             ]);
-
 
             Mail::to('jeyhunbiznes43@gmail.com')->send(new OrderMail($order->load(
                 'city',

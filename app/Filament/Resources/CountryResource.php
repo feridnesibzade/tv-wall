@@ -10,6 +10,7 @@ use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
+use Illuminate\Database\Eloquent\Model;
 
 class CountryResource extends Resource
 {
@@ -17,13 +18,15 @@ class CountryResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
+    protected static ?string $label = 'Cities';
+
     protected static ?string $navigationGroup = 'Pages';
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                TextInput::make('title'),
+                TextInput::make('title')->required(),
             ]);
     }
 

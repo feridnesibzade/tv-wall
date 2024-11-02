@@ -27,7 +27,7 @@ class ServicesResource extends Resource
         return $form
             ->schema([
                 TextInput::make('title')->reactive()->required() // Ensures the field is reactive for live slug generation
-                    ->afterStateUpdated(fn ($state, callable $set) => $set('slug', \Str::slug($state))), // Updates the slug based on title
+                    ->afterStateUpdated(fn($state, callable $set) => $set('slug', \Str::slug($state))), // Updates the slug based on title
 
                 TextInput::make('slug')
                     ->required()

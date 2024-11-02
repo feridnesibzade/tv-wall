@@ -14,7 +14,7 @@ return new class extends Migration {
             $table->id();
             $table->string('title');
             $table->integer('city_id');
-            $table->text('description');
+            $table->text('description')->nullable();
             $table->integer('year');
             $table->text('images');
             $table->timestamps();

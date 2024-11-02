@@ -1,12 +1,19 @@
 @php
     $DayStartPeriod = Carbon\Carbon::now();
-    $DayEndPeriod = Carbon\Carbon::now()->addDays(4);
+    $DayEndPeriod = Carbon\Carbon::now()->addDays(9);
     $DayPeriod = Carbon\CarbonPeriod::create($DayStartPeriod, '1 day', $DayEndPeriod);
 
-    $hourStartPeriod = Carbon\Carbon::now();
+    $hourStartPeriod = Carbon\Carbon::now()->setTime(7, 0);
+
+    if (Carbon\Carbon::now()->lt($hourStartPeriod)) {
+        $currentWorkingTime = $hourStartPeriod;
+    } else {
+        $currentWorkingTime = Carbon\Carbon::now();
+    }
+
     $hourEndPeriod = Carbon\Carbon::now()->endOfDay();
 
-    $hourPeriod = Carbon\CarbonPeriod::create($hourStartPeriod, '2 hour', $hourEndPeriod);
+    $hourPeriod = Carbon\CarbonPeriod::create($currentWorkingTime, '1 hour', $hourEndPeriod);
 
     // dd($hourPeriod)
 
@@ -24,8 +31,8 @@
     </div>
     <div class="section_time">
         @foreach ($hourPeriod as $hour)
-            <button :class="{ 'activeBtn': formData.time.includes('{{ $hour->format("g:00 a") }}') }"
-                @click="toggleTime('{{ $hour->format("g:00 a") }}')">{{ $hour->format('g:00 A') }}</button>
+            <button :class="{ 'activeBtn': formData.time.includes('{{ $hour->format('g:00 a') }}') }"
+                @click="toggleTime('{{ $hour->format('g:00 a') }}')">{{ $hour->format('g:00 A') }}</button>
         @endforeach
     </div>
 </section>

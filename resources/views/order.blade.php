@@ -25,9 +25,9 @@
                 <form @submit.prevent="findCity">
                     <div style="display: flex; flex-direction: column">
                         <div style="display: flex;gap:10px">
-                            <input type="text" style="z-index: 999" placeholder="find your place by name or ZIP-code"
+                            <input type="text" style="z-index: 100" placeholder="find your place by name or ZIP-code"
                                 x-model="formData.zip_code" />
-                            <button type="submit" style="z-index: 999">
+                            <button type="submit" style="z-index: 100">
                                 <img src="/storage/img/right_arrow.svg" alt="" />
                             </button>
                         </div>
@@ -52,19 +52,7 @@
 
                 <div class="section__tv__main">
                     <div>
-                        <section class="section__tv">
-                            <h3>Can you help lift the TV?</h3>
-                            <div>
-                                <button type="button" :class="{ 'activeBtn': formData.liftAssistance.value === 1 }"
-                                    @click="formData.liftAssistance.value = 1; formData.liftAssistance.price = 0; formData.liftAssistance.title = 'I will help'">
-                                    I will help
-                                </button>
-                                <button type="button" :class="{ 'activeBtn': formData.liftAssistance.value === 2 }"
-                                    @click="formData.liftAssistance.value = 2; formData.liftAssistance.price = 5; formData.liftAssistance.title = 'Need an assistant'">
-                                    Need an assistant
-                                </button>
-                            </div>
-                        </section>
+                        @include('components.book.lifting')
 
                         @include('components.book.extra-services')
                     </div>
@@ -101,7 +89,12 @@
                         <h3>TV Wall Mounting</h3>
                         <ul>
                             <template x-for="(item, index) in bill" :key="index">
-                                <li x-text="item"></li>
+                                <li>
+                                    <div style="display: flex; justify-content:space-between">
+                                        <p x-text="item.title"></p>
+                                        <h4 x-show="item.price" x-text="item.price"></h4>
+                                    </div>
+                                </li>
                             </template>
                         </ul>
                     </div>
@@ -127,7 +120,7 @@
                         <div>
                             <p>Tax Charge</p>
 
-                            <h4>$5</h4>
+                            <h4 x-text="tax">$0</h4>
                         </div>
                         <div>
                             <p>Estimated Total</p>
@@ -187,6 +180,7 @@
                         email: '',
                     },
                     amount: '$00.00',
+                    tax: '$0',
                     totalAmount: '$00.00',
                     bill: [],
                     error: false,
@@ -267,27 +261,44 @@
                     addItemOnGlobalClick() {
                         this.bill = [];
                         if (this.formData.city) {
-                            this.bill.push(this.formData.city.title);
+                            this.bill.push({
+                                title: this.formData.city.title,
+                            });
                         }
 
                         if (this.formData.tvSize.title) {
-                            this.bill.push(this.formData.tvSize.title);
+                            this.bill.push({
+                                title: this.formData.tvSize.title,
+                                price: '$' + this.formData.tvSize.price,
+                            });
                         }
 
                         if (this.formData.wallMount.title) {
-                            this.bill.push(this.formData.wallMount.title);
+                            this.bill.push({
+                                title: this.formData.wallMount.title,
+                                price: '$' + this.formData.wallMount.price
+                            });
                         }
 
                         if (this.formData.wallType.title) {
-                            this.bill.push(this.formData.wallType.title);
+                            this.bill.push({
+                                title: this.formData.wallType.title,
+                                price: '$' + this.formData.wallType.price,
+                            });
                         }
 
                         if (this.formData.liftAssistance.title) {
-                            this.bill.push(this.formData.liftAssistance.title);
+                            this.bill.push({
+                                title: this.formData.liftAssistance.title,
+                                price: '$' + this.formData.liftAssistance.price
+                            });
                         }
 
                         if (this.formData.extraService.title) {
-                            this.bill.push(this.formData.extraService.title);
+                            this.bill.push({
+                                title: this.formData.extraService.title,
+                                price: '$' + this.formData.extraService.price,
+                            });
                         }
 
                         this.amount =
@@ -297,7 +308,10 @@
                             (+this.formData.liftAssistance.price) + (+this.formData.extraService.price)
 
 
-                        this.totalAmount = `$${this.amount+ 5}`
+                        this.tax = this.amount * {{ $settings->tax ?? 0 }} / 100;
+
+                        this.totalAmount = `$${this.amount+ this.tax}`
+                        this.tax = `$${this.tax}`
                         this.amount = `$${this.amount}`
 
                     },

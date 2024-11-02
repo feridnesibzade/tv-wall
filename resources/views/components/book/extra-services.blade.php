@@ -1,4 +1,4 @@
-<section class="section__tv" style="z-index: 999">
+<section class="section__tv" style="z-index: 100">
     <h3>Extra services</h3>
 
     <div>

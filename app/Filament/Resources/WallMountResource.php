@@ -24,12 +24,12 @@ class WallMountResource extends Resource
     {
         return $form
             ->schema([
-                TextInput::make('title'),
-                TextInput::make('price'),
+                TextInput::make('title')->required(),
+                TextInput::make('price')->required(),
                 FileUpload::make('image')
                     ->image()
                     ->disk('public')
-                    ->directory('wall-type'),
+                    ->directory('wall-type')->required(),
             ]);
     }
 

@@ -1,5 +1,5 @@
 <div id="blur"></div>
-<div class="bg__dark__blue">
+<div class="bg__dark__blue" style="position: fixed; width: 100%">
     <div class="container">
         <header>
             <a href="/">
@@ -93,3 +93,4 @@
         </div>
     </div>
 </div>
+<div style="height:74px"></div>
