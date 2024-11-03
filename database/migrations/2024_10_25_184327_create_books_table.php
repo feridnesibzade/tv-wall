@@ -12,6 +12,7 @@ return new class extends Migration {
     {
         Schema::create('books', function (Blueprint $table) {
             $table->id();
+            $table->integer('zip_code');
             $table->foreignId('tv_size_id');
             $table->foreignId('city_id');
             $table->foreignId('wall_mount_id');

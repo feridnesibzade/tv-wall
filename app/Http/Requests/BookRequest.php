@@ -34,6 +34,7 @@ class BookRequest extends FormRequest
             'fullname' => 'required',
             'phone' => 'required',
             'email' => 'required',
+            'zip_code' => 'required|integer|exists:zip_codes,zip_code',
         ];
     }
 
@@ -52,6 +53,7 @@ class BookRequest extends FormRequest
             'fullname' => 'Fullname',
             'phone' => 'Phone',
             'email' => 'E-mail',
+            'zip_code' => 'Zip Code',
         ];
     }
 }

@@ -31,6 +31,7 @@ class BookResource extends Resource
             ->columns([
                 TextColumn::make('id'),
                 TextColumn::make('city.title'),
+                TextColumn::make('zip_code'),
                 TextColumn::make('tvSize.title'),
                 TextColumn::make('wallMount.title'),
                 TextColumn::make('wallType.title'),

@@ -118,6 +118,7 @@ class StaticController extends Controller
     {
         try {
             $order = Book::create([
+                'zip_code' => request()->zip_code,
                 'city_id' => request()->city['id'],
                 'tv_size_id' => request()->tvSize['value'],
                 'wall_mount_id' => request()->wallMount['value'],

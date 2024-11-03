@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Book extends Model
 {
     protected $fillable = [
+        'zip_code',
         'city_id',
         'tv_size_id',
         'wall_mount_id',
@@ -47,4 +48,5 @@ class Book extends Model
     {
         return $this->belongsTo(ExtraService::class, 'extra_service_id');
     }
+
 }

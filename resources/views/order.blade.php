@@ -16,7 +16,7 @@
     </section>
 
 
-    <div class="bg__book" x-data="Booking" x-init="triggerFindCity" @click.window="addItemOnGlobalClick">
+    <div class="bg__book" x-data="Booking" @click.window="addItemOnGlobalClick">
         <div class="container" style="min-height: 61vh; position: relative;">
             <section class="find__your__city">
                 <h3 class="section__title section__title__sm">
@@ -139,6 +139,10 @@
         <script>
             document.addEventListener('alpine:init', () => {
                 Alpine.data('Booking', () => ({
+                    init() {
+                        this.triggerFindCity();
+                        this.updateAvailableTimes();
+                    },
                     formData: {
                         zip_code: '{{ request()->zip_code ?? null }}' ?? null,
                         city: {
@@ -185,7 +189,7 @@
                     bill: [],
                     error: false,
                     validZipCode: false,
-                    selectedDate: '',
+                    selectedDate: '{{ now() }}',
                     startHour: 7,
                     availableTimes: [],
                     currentDate: new Date(),

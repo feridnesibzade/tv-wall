@@ -45,6 +45,7 @@
             <p><span class="label">Address:</span> {{ $data['address'] }}<br>
                 {{ $data['address_detail'] }}</p>
             <p><span class="label">City:</span> {{ $data['city']['title'] }}</p>
+            <p><span class="label">Zip Code:</span> {{ $data['zip_code'] }}</p>
         </div>
 
         <!-- Order Details -->
