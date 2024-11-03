@@ -19,6 +19,7 @@
 <style>
     .section__tv div .activeBtn {
         border: 1px solid #418DFF;
+        outline: 1px solid #418DFF;
     }
 
     /* .section__tv__card {

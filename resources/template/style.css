@@ -1188,7 +1188,7 @@ footer {
 }
 
 .section__tv div button {
-    border: 1px solid white;
+    border: 2px solid white;
     border-radius: 64px;
     background-color: transparent;
     font-size: 28px;
@@ -1197,12 +1197,13 @@ footer {
     color: white;
     padding: 20px 36px;
     cursor: pointer;
-    transition: 0.5s ease all;
+    transition: 0.5s ease border;
+    /* transition: 0s none outline !important; */
 
 }
 
 .section__tv div button:hover {
-    border: 1px solid #418DFF;
+    border: 2px solid #418DFF !important;
 }
 
 .section__tv__main {
