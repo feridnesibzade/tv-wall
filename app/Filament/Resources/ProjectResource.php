@@ -27,7 +27,7 @@ class ProjectResource extends Resource
     {
         return $form
             ->schema([
-                TextInput::make('title'),
+                TextInput::make('title')->required(),
                 TextInput::make('year')->required(),
 
                 Select::make('city_id')
@@ -46,7 +46,7 @@ class ProjectResource extends Resource
                     ->image()
                     ->multiple()
                     ->disk('public')
-                    ->directory('projects'),
+                    ->directory('projects')->required(),
             ]);
     }
 
@@ -77,7 +77,7 @@ class ProjectResource extends Resource
     {
         // Ensure the 'detail' field is properly json_encoded
         // $data['detail'] = json_encode($data['detail']);
-        dd($data);
+        // dd($data);
         return $data;
     }
 
