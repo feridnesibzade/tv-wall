@@ -25,7 +25,7 @@ class BookRequest extends FormRequest
             'tvSize.value' => 'required|integer',
             'wallMount.value' => 'required|integer',
             'wallType.value' => 'required|integer',
-            'extraService.value' => 'required|integer',
+            'extraService' => 'required|array',
             'liftAssistance.value' => 'required|integer',
             'date' => 'required',
             'time' => 'required|array',

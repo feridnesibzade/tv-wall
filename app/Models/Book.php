@@ -12,7 +12,7 @@ class Book extends Model
         'tv_size_id',
         'wall_mount_id',
         'wall_type_id',
-        'extra_service_id',
+        // 'extra_service_id',
         'lift_assistance',
         'lift_assistance_title',
         'date',
@@ -42,6 +42,12 @@ class Book extends Model
     public function wallType()
     {
         return $this->belongsTo(WallType::class, 'wall_type_id');
+    }
+
+
+    public function extraServices()
+    {
+        return $this->belongsToMany(ExtraService::class, 'book_extra_services');
     }
 
     public function extraService()

@@ -21,8 +21,8 @@
                 <li class="has__dropdown">
                     <a href="/locations">Locations</a>
                     <div class="dropdown__container">
-                        <div>
-                            @foreach ($locations as $location)
+                        @foreach ($locations as $location)
+                            <div>
                                 <h3>{{ $location->title }}</h3>
                                 <ul class="dropdown">
                                     @if ($location->has('cities'))
@@ -31,8 +31,8 @@
                                         @endforeach
                                     @endif
                                 </ul>
-                            @endforeach
-                        </div>
+                            </div>
+                        @endforeach
                     </div>
                 </li>
             </ul>
@@ -89,6 +89,24 @@
                     </li>
                 </ul>
                 <button class="close__menu">X</button>
+            </div>
+            <div>
+                <ul class="side_foot">
+                    <li><a href="">{{ $settings->phone }}</a></li>
+                    <li><a href="">{{ $settings->email }}</a></li>
+                    <li><a href="/book" class="btn" style="color:black">Book now</a></li>
+                </ul>
+            </div>
+            <div>
+                <ul style="display:flex; justify-content:center; gap:16px">
+                    @foreach ($settings->social_medias as $media)
+                        <li class="icon">
+                            <a href="{{ $media['link'] }}">
+                                <img src="/storage/{{ $media['icon'] }}" alt="{{ $media['title'] }}" />
+                            </a>
+                        </li>
+                    @endforeach
+                </ul>
             </div>
         </div>
     </div>

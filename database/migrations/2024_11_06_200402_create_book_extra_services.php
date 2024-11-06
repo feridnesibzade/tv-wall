@@ -10,13 +10,10 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::create('settings', function (Blueprint $table) {
+        Schema::create('book_extra_services', function (Blueprint $table) {
             $table->id();
-            $table->string('logo');
-            $table->string('phone')->nullable();
-            $table->string('email')->nullable();
-            $table->string('social_medias')->nullable();
-            $table->integer('tax')->nullable();
+            $table->foreignId('extra_service_id');
+            $table->foreignId('book_id');
             $table->timestamps();
         });
     }
@@ -26,6 +23,6 @@ return new class extends Migration {
      */
     public function down(): void
     {
-        Schema::dropIfExists('settings');
+        Schema::dropIfExists('book_extra_services');
     }
 };

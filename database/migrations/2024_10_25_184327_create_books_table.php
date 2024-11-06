@@ -17,7 +17,7 @@ return new class extends Migration {
             $table->foreignId('city_id');
             $table->foreignId('wall_mount_id');
             $table->foreignId('wall_type_id');
-            $table->foreignId('extra_service_id');
+            // $table->foreignId('extra_service_id');
             $table->integer('lift_assistance');
             $table->string('lift_assistance_title');
             $table->string('date');

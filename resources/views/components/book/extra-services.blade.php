@@ -3,8 +3,15 @@
 
     <div>
         @foreach ($data['extraServices'] as $row)
-            <button :class="{ 'activeBtn': formData.extraService.value === {{ $row->id }} }"
-                @click="formData.extraService.value = {{ $row->id }}; formData.extraService.price = {{ $row->price }}; formData.extraService.title = '{{ $row->title }}'">{{ $row->title }}</button>
+            <button
+                :class="{
+                    'activeBtn': formData.extraService.some(service =>
+                        service.value === Number({{ $row->id }}) &&
+                        service.price === Number({{ $row->price }}) &&
+                        service.title === '{{ $row->title }}'
+                    )
+                }"
+                @click="toggleExtraServie( {{ $row }} );">{{ $row->title }}</button>
         @endforeach
         {{-- <button>External cord hider</button>
         <button>Install soundbar</button>

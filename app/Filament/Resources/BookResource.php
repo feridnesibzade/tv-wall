@@ -35,7 +35,10 @@ class BookResource extends Resource
                 TextColumn::make('tvSize.title'),
                 TextColumn::make('wallMount.title'),
                 TextColumn::make('wallType.title'),
-                TextColumn::make('extraService.title'),
+                TextColumn::make('extraServices')->formatStateUsing(function ($record) {
+                    // Fetch related role titles and join them into a string
+                    return $record->extraServices->pluck('title')->join(', ');
+                }),
                 TextColumn::make('lift_assistance_title'),
                 TextColumn::make('date'),
                 TextColumn::make('time')

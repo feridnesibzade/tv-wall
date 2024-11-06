@@ -123,7 +123,7 @@ class StaticController extends Controller
                 'tv_size_id' => request()->tvSize['value'],
                 'wall_mount_id' => request()->wallMount['value'],
                 'wall_type_id' => request()->wallType['value'],
-                'extra_service_id' => request()->extraService['value'],
+                // 'extra_service_id' => request()->extraService['value'],
                 'lift_assistance' => request()->liftAssistance['value'],
                 'lift_assistance_title' => request()->liftAssistance['title'],
                 'date' => request()->date,
@@ -134,13 +134,13 @@ class StaticController extends Controller
                 'address' => request()->address,
                 'address_detail' => request()->address_detail,
             ]);
-
+            $order->extraServices()->sync(collect($request->extraService)->pluck('value')->toArray());
             Mail::to('jeyhunbiznes43@gmail.com')->send(new OrderMail($order->load(
                 'city',
                 'wallMount',
                 'tvSize',
                 'wallType',
-                'extraService'
+                'extraServices'
             )));
 
             return response()->json(['message' => 'Successfully reserved.']);

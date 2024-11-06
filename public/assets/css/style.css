@@ -1541,3 +1541,20 @@ footer {
     right: 50px;
     z-index: 99999;
 }
+
+.side__menu .side_foot li>a {
+    font-size: 24px;
+    font-weight: 700;
+    color: auto;
+}
+
+.side_foot {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.side__menu .side_foot .btn {
+    font-size: 16px;
+}

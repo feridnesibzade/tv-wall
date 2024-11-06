@@ -38,6 +38,7 @@ class SettingPage extends Page implements HasForms
             'logo' => $row->logo ?? null,
             'phone' => $row->phone ?? null,
             'tax' => $row->tax ?? null,
+            'email' => $row->email ?? null,
             'social_medias' => array_map(fn($item) => [
                 'title' => $item['title'] ?? null,
                 'link' => $item['link'] ?? null,
@@ -53,6 +54,7 @@ class SettingPage extends Page implements HasForms
             ->schema([
                 TextInput::make('phone')->required(),
                 TextInput::make('tax')->required(),
+                TextInput::make('email')->email()->required(),
                 FileUpload::make('logo')
                     ->disk('public')
                     ->directory('settings')
@@ -90,6 +92,7 @@ class SettingPage extends Page implements HasForms
             Setting::updateOrCreate(['id' => 1], [
                 'phone' => $data['phone'],
                 'logo' => $data['logo'],
+                'email' => $data['email'],
                 'tax' => $data['tax'],
                 'social_medias' => json_encode($data['social_medias']),
             ]);

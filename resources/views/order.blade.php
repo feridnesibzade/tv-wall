@@ -84,7 +84,16 @@
                         </button>
                     </form>
                 </section>
-                <div class="section__tv__card" id="bill" style="width: 300px; ">
+
+                <div style="width:fit-content;margin-left: auto;margin-right: auto;">
+                    <button @click="toggleBill = !toggleBill"
+                        style="padding: 2px 20px 2px 20px; gap: 20px; border-radius: 40px; color: #418DFF; backgound: #fff; font-size:24px; font-weight: 600; display:flex; gap:20px; cursor:pointer; margin-bottom: 20px">
+                        <img src="/storage/img/card-ico.png" style="width:auto; align-self: center" alt=""> <span
+                            x-text="totalAmount">200$</span>
+                    </button>
+                </div>
+
+                <div x-show="toggleBill" class="section__tv__card" id="bill" style="width: 300px; ">
                     <div>
                         <h3>TV Wall Mounting</h3>
                         <ul>
@@ -170,11 +179,7 @@
                             title: '',
                             price: '',
                         },
-                        extraService: {
-                            value: '',
-                            title: '',
-                            price: '',
-                        },
+                        extraService: [],
                         date: '',
                         time: [],
                         address: '',
@@ -192,6 +197,7 @@
                     selectedDate: '{{ now() }}',
                     startHour: 7,
                     availableTimes: [],
+                    toggleBill: false,
                     currentDate: new Date(),
                     errorMessage: 'There is no department in your city.',
                     findCity() {
@@ -266,6 +272,29 @@
                             this.formData.time.splice(index, 1); // Remove time if already selected
                         }
                     },
+                    toggleExtraServie(service) {
+                        const index = this.formData.extraService.findIndex(s =>
+                            s.value === service.id &&
+                            s.price === service.price &&
+                            s.title === service.title
+                        );
+                        if (index === -1) {
+                            console.log(service);
+                            if (service.id === 1) {
+                                this.formData.extraService = []
+                            } else {
+                                this.formData.extraService = this.formData.extraService.filter(
+                                    existingService => existingService.value !== 1);
+                            }
+                            this.formData.extraService.push({
+                                value: service.id,
+                                price: service.price,
+                                title: service.title
+                            });
+                        } else {
+                            this.formData.extraService.splice(index, 1);
+                        }
+                    },
                     addItemOnGlobalClick() {
                         this.bill = [];
                         if (this.formData.city) {
@@ -302,19 +331,22 @@
                             });
                         }
 
-                        if (this.formData.extraService.title) {
-                            this.bill.push({
-                                title: this.formData.extraService.title,
-                                price: '$' + this.formData.extraService.price,
+                        if (this.formData.extraService) {
+                            this.formData.extraService.forEach(element => {
+                                this.bill.push({
+                                    title: element.title,
+                                    price: '$' + element.price,
+                                });
                             });
+
                         }
 
                         this.amount =
                             (+this.formData.tvSize.price) +
                             (+this.formData.wallMount.price) + (+this
                                 .formData.wallType.price) +
-                            (+this.formData.liftAssistance.price) + (+this.formData.extraService.price)
-
+                            (+this.formData.liftAssistance.price) + (+this.formData.extraService.reduce((
+                                sum, service) => sum + service.price, 0))
 
                         this.tax = this.amount * {{ $settings->tax ?? 0 }} / 100;
 
@@ -355,11 +387,7 @@
                                     title: '',
                                     price: '',
                                 },
-                                extraService: {
-                                    value: '',
-                                    title: '',
-                                    price: '',
-                                },
+                                extraService: [],
                                 date: '',
                                 time: [],
                                 address: ''
@@ -371,6 +399,7 @@
                         }
                     },
                     updateAvailableTimes() {
+                        this.formData.time = [];
                         const selectedDateObj = new Date(this.selectedDate);
                         const currentHour = this.currentDate.getHours();
                         this.availableTimes = [];
