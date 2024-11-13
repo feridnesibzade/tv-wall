@@ -5,19 +5,19 @@
         <div class="container">
             <ul class="breadcrumb">
                 <li><a href="/">Home</a></li>
-                <li><a href="/services">Book</a></li>
-                <li><a href="#">Success</a></li>
+                <li><a href="/book">@staticText('page.book.title')</a></li>
+                <li><a href="#">@staticText('page.orderSuccess.title')</a></li>
             </ul>
             <div class="services__banner__inner">
-                <h1>Book success</h1>
+                <h1>@staticText('page.orderSuccess.title')</h1>
                 <div class="container"
                     style="margin-left: auto; margin-right: auto; width: 50rem;gap:25px !important; display: flex; justify-content:center; padding:10px; height:auto; text-align: center; line-height: 32px; flex-direction:column; padding-top:5rem">
                     <div>
                         <img src="/storage/img/checked-ico.png" alt="">
                     </div>
-                    <p>Congratulations!
+                    <p>@staticText('success.congrats.title')
                         </br>
-                        Our company will contact with you soon</p>
+                        @staticText('success.congrats.message')</p>
                 </div>
                 {{-- <div>
                     <ul>

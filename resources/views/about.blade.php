@@ -10,7 +10,7 @@
         </div>
         <div class="container">
             <div class="about__text">
-                <h1>About</h1>
+                <h1>@staticText('about.title')</h1>
                 <div class="container__sm">
                     <img src="/storage/{{ $data['about']->logo }}" alt="" />
 
@@ -32,7 +32,7 @@
 
     <div class="container">
         <section class="cities__we__serve">
-            <h1 class="section__title">Cities we serve</h1>
+            <h1 class="section__title">@staticText('about.citiest.title')</h1>
             <div>
                 <img class="location__banner" src="/storage/img/location.png" alt="" />
                 <ul>

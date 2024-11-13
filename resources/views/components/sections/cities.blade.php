@@ -1,6 +1,6 @@
 <div class="container">
     <section class="cities__we__serve">
-        <h1 class="section__title">Cities we serve</h1>
+        <h1 class="section__title">@staticText('section.cities.title')</h1>
         <div>
             <img class="location__banner" src="/storage/img/location.png" alt="" />
             <ul>

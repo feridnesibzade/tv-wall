@@ -3,8 +3,10 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\WallMountResource\Pages;
+use App\Models\TvSize;
 use App\Models\WallMount;
 use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\Section;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -25,11 +27,21 @@ class WallMountResource extends Resource
         return $form
             ->schema([
                 TextInput::make('title')->required(),
-                TextInput::make('price')->required(),
+                // TextInput::make('price')->required(),
+
                 FileUpload::make('image')
                     ->image()
                     ->disk('public')
-                    ->directory('wall-type')->required(),
+                    ->directory('wall-type'),
+                Section::make('prices')->schema(function ($record) {
+                    $components = [];
+
+                    foreach (TvSize::all() as $size) {
+                        $components[] = TextInput::make("prices.{$size->id}")->label($size->title . ' Price');
+                    }
+                    return $components;
+                })->columns(2),
+
             ]);
     }
 
@@ -38,13 +50,17 @@ class WallMountResource extends Resource
         return $table
             ->columns([
                 TextColumn::make('title'),
-                TextColumn::make('price'),
+                TextColumn::make('prices'),
             ])
             ->filters([
                 //
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
+                Tables\Actions\EditAction::make()
+                    ->using(function ($record, array $data) {
+                        $record->update($data);
+                        return $record;
+                    }),
                 Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([

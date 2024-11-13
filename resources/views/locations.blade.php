@@ -11,7 +11,7 @@
                 @endisset
         </ul>
         <div class="location__banner__inner">
-            <h1>Locations</h1>
+            <h1>@staticText('locations.title')</h1>
             <div>
                 <div class="location__banner__inner__right">
 

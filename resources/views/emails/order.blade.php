@@ -1,5 +1,6 @@
 @php
     $extraServices = collect($data['extra_services']);
+    $wallMountPrice = $data['wall_mount']['prices'][$data['tv_size']['id']];
 @endphp
 
 <!DOCTYPE html>
@@ -74,12 +75,12 @@
         <div class="section">
             <h3>Pricing Summary</h3>
             <p><span class="label">TV Size Price:</span> ${{ $data['tv_size']['price'] }}</p>
-            <p><span class="label">Wall Mount Price:</span> ${{ $data['wall_mount']['price'] }}</p>
+            <p><span class="label">Wall Mount Price:</span> ${{ $wallMountPrice }}</p>
             <p><span class="label">Wall Type Price:</span> ${{ $data['wall_type']['price'] }}</p>
             <p><span class="label">Extra Service Price:</span> ${{ $extraServices->sum('price') }}
             </p>
             <p><strong>Total Price:</strong>
-                ${{ $data['tv_size']['price'] + $data['wall_mount']['price'] + $data['wall_type']['price'] + $extraServices->sum('price') }}
+                ${{ $data['tv_size']['price'] + $wallMountPrice + $data['wall_type']['price'] + $extraServices->sum('price') }}
             </p>
         </div>
     </div>

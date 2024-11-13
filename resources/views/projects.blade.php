@@ -5,13 +5,13 @@
         <div class="container">
             <ul class="breadcrumb">
                 <li><a href="/">Home</a></li>
-                <li><a href="/projects">Projects</a></li>
+                <li><a href="/projects">@staticText('page.projects.title')</a></li>
                 @if (isset($data['project']))
                     <li><a href="#">{{ $data['project']->title }}</a></li>
                 @endif
             </ul>
             <div class="location__banner__inner">
-                <h1>Projects</h1>
+                <h1>@staticText('page.projects.title')</h1>
                 <div>
                     <div class="location__banner__inner__right">
                         @if (!empty($data['projects']))

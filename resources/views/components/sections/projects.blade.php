@@ -30,5 +30,5 @@
             <img src="img/grid-8.png" alt="" />
         </div> --}}
     </div>
-    <a href="/projects" class="btn">View all</a>
+    <a href="/projects" class="btn">@staticText('viewAll')</a>
 </section>

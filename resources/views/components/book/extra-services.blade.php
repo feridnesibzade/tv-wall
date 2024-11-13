@@ -1,5 +1,5 @@
 <section class="section__tv" style="z-index: 100">
-    <h3>Extra services</h3>
+    <h3>@staticText('order.extraServices.title')</h3>
 
     <div>
         @foreach ($data['extraServices'] as $row)

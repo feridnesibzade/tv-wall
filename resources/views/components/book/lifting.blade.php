@@ -1,5 +1,5 @@
 <section class="section__tv">
-    <h3>Can you help lift the TV?</h3>
+    <h3>@staticText('order.lifting.title')</h3>
     <div>
         @foreach ($data['lifting'] as $row)
             <button type="button" :class="{ 'activeBtn': formData.liftAssistance.value === {{ $row->price }} }"

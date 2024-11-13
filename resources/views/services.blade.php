@@ -11,7 +11,7 @@
                 @endisset
         </ul>
         <div class="services__banner__inner">
-            <h1>Services</h1>
+            <h1>@staticText('page.services.title')</h1>
             <div>
                 <ul>
                     @foreach ($data['services'] as $service)

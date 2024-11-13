@@ -1,5 +1,5 @@
 <section class="section__tv" style="z-index: 100">
-    <h3>Select a wall type</h3>
+    <h3>@staticText('order.wallType.title')</h3>
     <div>
         @foreach ($data['wallTypes'] as $row)
             <button :class="{ 'activeBtn': formData.wallType.value === {{ $row->id }} }" style="z-index: 100"

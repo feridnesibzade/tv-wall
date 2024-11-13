@@ -21,12 +21,12 @@
 @endphp
 
 <section class="section__tv">
-    <h3>Date & Time</h3>
-    <p>Pick a date and time for your appointment, and we'll be there.</p>
+    <h3>@staticText('order.dateTime.title')</h3>
+    <p>@staticText('order.dateTime.description')</p>
     <div class="section_day">
         @foreach ($DayPeriod as $day)
             <button :class="{ 'activeBtn': formData.date === '{{ $day->format('l, F d') }}' }"
-                @click="formData.date = '{{ $day->format('l, F d') }}'; selectedDate = '{{ $day->format('Y-m-d') }}';updateAvailableTimes()">{{ $day->format('F d') }}</button>
+                @click="formData.date = '{{ $day->format('l, F d') }}'; selectedDate = '{{ $day->format('Y-m-d') }}';updateAvailableTimes()">{{ $day->format('M d') }}</button>
         @endforeach
         <!-- Add more dates as needed -->
     </div>

@@ -341,12 +341,18 @@
 
     .location__bg__inner::before {
         top: -20%;
-
     }
 
     .location__bg__inner::after {
         top: -30%;
+    }
 
+    .desktop_bill {
+        display: block;
+    }
+
+    #billBtn {
+        display: none;
     }
 }
 
@@ -374,7 +380,7 @@
 
 @media (max-width: 768px) {
     .section__tv__card {
-        position: static !important;
+        /* position: static !important; */
         margin-left: auto !important;
         margin-right: auto !important;
         margin-bottom: 20px !important;
@@ -399,4 +405,11 @@
         font-size: 18px;
     }
 
+    .desktop_bill {
+        display: none;
+    }
+
+    #billBtn {
+        display: flex;
+    }
 }

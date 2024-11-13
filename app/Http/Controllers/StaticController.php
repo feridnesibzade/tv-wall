@@ -116,6 +116,7 @@ class StaticController extends Controller
 
     public function createOrder(BookRequest $request)
     {
+        // dd($request->all());
         try {
             $order = Book::create([
                 'zip_code' => request()->zip_code,
@@ -145,7 +146,7 @@ class StaticController extends Controller
 
             return response()->json(['message' => 'Successfully reserved.']);
         } catch (\Exception $e) {
-            return response()->json(['message' => $e->getMessage(), 'errors' => $e->getMessage()], 500);
+            return response()->json(['message' => $e->getMessage(), 'errors' => "Oops! Something Went Wrong."], 500);
         }
     }
 

@@ -38,7 +38,8 @@
             </ul>
             <ul class="social">
                 <li>
-                    <a class="tel" href="tel:{{ $settings->phone }}">{{ $settings->phone }}</a>
+                    <a class="tel"
+                        href="tel:{{ trim(str_replace(' ', '', $settings->phone)) }}">{{ $settings->phone }}</a>
                 </li>
                 <li><a href="/book" class="btn">Book now</a></li>
                 <li class="menu"><img src="/storage/img/menu.svg" alt="" /></li>
@@ -54,8 +55,8 @@
         <div id="sideMenu" class="side__menu">
             <div>
                 <ul>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">About</a></li>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/about">About</a></li>
                     <li class="has__dropdown__rwd">
                         <a href="/services">Services &rAarr;</a>
 
@@ -92,8 +93,9 @@
             </div>
             <div>
                 <ul class="side_foot">
-                    <li><a href="">{{ $settings->phone }}</a></li>
-                    <li><a href="">{{ $settings->email }}</a></li>
+                    <li><a href="tel:{{ trim(str_replace(' ', '', $settings->phone)) }}">{{ $settings->phone }}</a>
+                    </li>
+                    <li><a href="mailto:{{ trim($settings->email) }}">{{ $settings->email }}</a></li>
                     <li><a href="/book" class="btn" style="color:black">Book now</a></li>
                 </ul>
             </div>

@@ -21,15 +21,15 @@ const swiper2 = new Swiper(".feedback .swiper", {
     },
     breakpoints: {
         350: {
-            slidesPerView: 1, 
-            spaceBetween: 16, 
+            slidesPerView: 1,
+            spaceBetween: 16,
         },
         668: {
-            slidesPerView: 2, 
-            spaceBetween: 16, 
+            slidesPerView: 2,
+            spaceBetween: 16,
         },
         1024: {
-            slidesPerView: 3, 
+            slidesPerView: 3,
             spaceBetween: 24,
         },
     },
@@ -58,27 +58,27 @@ navigation.addEventListener(
 
 
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const menuButton = document.querySelector('.menu');
-    const rightMenu = document.querySelector('.side__menu'); 
-    const closeMenu = document.querySelector('.close__menu'); 
-  
+    const rightMenu = document.querySelector('.side__menu');
+    const closeMenu = document.querySelector('.close__menu');
+
     if (menuButton) {
-      menuButton.addEventListener('click', function() {
-        rightMenu.classList.add('open'); 
-      });
-      closeMenu.addEventListener('click', function() {
-        rightMenu.classList.remove('open'); 
-      });
+        menuButton.addEventListener('click', function () {
+            rightMenu.classList.add('open');
+        });
+        closeMenu.addEventListener('click', function () {
+            rightMenu.classList.remove('open');
+        });
 
     }
-  });
-  
-  document.addEventListener('DOMContentLoaded', function() {
+});
+
+document.addEventListener('DOMContentLoaded', function () {
     const dropdownHeaders = document.querySelectorAll('.has__dropdown__rwd > a');
 
     dropdownHeaders.forEach(header => {
-        header.addEventListener('click', function(e) {
+        header.addEventListener('click', function (e) {
             e.preventDefault();
             const dropdownContainer = this.nextElementSibling;
             dropdownContainer.classList.toggle('dropdown__open');

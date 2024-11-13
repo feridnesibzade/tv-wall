@@ -3,6 +3,8 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Http;
+use Illuminate\Validation\ValidationException;
 
 class BookRequest extends FormRequest
 {
@@ -21,6 +23,18 @@ class BookRequest extends FormRequest
      */
     public function rules(): array
     {
+        // 6Lf9xHoqAAAAAOwZnIH5s4z75b4n4y37PZ0xk1VO
+        $response = Http::asForm()->post('https://www.google.com/recaptcha/api/siteverify', [
+            'secret' => '6Lf9xHoqAAAAAOwZnIH5s4z75b4n4y37PZ0xk1VO',
+            'response' => request()->recaptchaToken
+        ])->json();
+
+
+        if (!$response['success']) {
+            throw ValidationException::withMessages([
+                'recaptcha' => 'reCAPTCHA verification failed.',
+            ]);
+        }
         return [
             'tvSize.value' => 'required|integer',
             'wallMount.value' => 'required|integer',

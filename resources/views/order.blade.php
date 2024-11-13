@@ -5,12 +5,12 @@
         <div class="container">
             <ul class="breadcrumb">
                 <li><a href="#">Home</a></li>
-                <li><a href="#">Book now</a></li>
+                <li><a href="#">@staticText('page.book.title')</a></li>
             </ul>
         </div>
         <div class="container">
             <div class="about__text">
-                <h1>Book now</h1>
+                <h1>@staticText('page.book.title')</h1>
             </div>
         </div>
     </section>
@@ -20,12 +20,12 @@
         <div class="container" style="min-height: 61vh; position: relative;">
             <section class="find__your__city">
                 <h3 class="section__title section__title__sm">
-                    Find your city
+                    @staticText('section.findYourCity.title')
                 </h3>
                 <form @submit.prevent="findCity">
                     <div style="display: flex; flex-direction: column">
                         <div style="display: flex;gap:10px">
-                            <input type="text" style="z-index: 100" placeholder="find your place by name or ZIP-code"
+                            <input type="text" style="z-index: 100" placeholder="@staticText('placeholder.zipCode')"
                                 x-model="formData.zip_code" />
                             <button type="submit" style="z-index: 100">
                                 <img src="/storage/img/right_arrow.svg" alt="" />
@@ -66,34 +66,28 @@
 
                 <!-- Service Address -->
                 <section class="find__your__city">
-                    <h3 class="section__title section__title__sm">Service Address</h3>
+                    <h3 class="section__title section__title__sm">@staticText('section.serviceAddress.title')</h3>
                     <form class="sectionBlck">
                         <input type="text" placeholder="Address" x-model="formData.address" />
                         <input type="text" style="max-width: 20rem" x-model="formData.address_detail"
                             placeholder="Apt, Unit, Floor">
                     </form>
                 </section>
-                <section class="find__your__city">
-                    <h3 class="section__title section__title__sm">Contact Info</h3>
+                <section class="find__your__city" style="margin-bottom: 100px">
+                    <h3 class="section__title section__title__sm">@staticText('section.contactInfo.title')</h3>
                     <form @submit.prevent="submitBooking">
                         <input type="text" placeholder="Fullname" style="max-width:25rem;" x-model="formData.fullname" />
                         <input type="text" style="max-width: 20rem" x-model="formData.phone" placeholder="Phone">
                         <input type="text" style="max-width: 20rem" x-model="formData.email" placeholder="E-mail">
+                        <div id="recaptcha" class="g-recaptcha"></div>
                         <button type="submit">
                             <img src="/storage/img/right_arrow.svg" alt="" />
                         </button>
                     </form>
                 </section>
 
-                <div style="width:fit-content;margin-left: auto;margin-right: auto;">
-                    <button @click="toggleBill = !toggleBill"
-                        style="padding: 2px 20px 2px 20px; gap: 20px; border-radius: 40px; color: #418DFF; backgound: #fff; font-size:24px; font-weight: 600; display:flex; gap:20px; cursor:pointer; margin-bottom: 20px">
-                        <img src="/storage/img/card-ico.png" style="width:auto; align-self: center" alt=""> <span
-                            x-text="totalAmount">200$</span>
-                    </button>
-                </div>
 
-                <div x-show="toggleBill" class="section__tv__card" id="bill" style="width: 300px; ">
+                <div class="section__tv__card desktop_bill" id="bill" style="width: 300px;z-index:800">
                     <div>
                         <h3>TV Wall Mounting</h3>
                         <ul>
@@ -138,7 +132,66 @@
                         </div>
                     </div>
                 </div>
+
+                <div id="mobileBill" class="section__tv__card" id="bill"
+                    style="width: 300px; z-index:800; display:none; position:fixed; top: 100px; ">
+                    <div>
+                        <h3>TV Wall Mounting</h3>
+                        <ul>
+                            <template x-for="(item, index) in bill" :key="index">
+                                <li>
+                                    <div style="display: flex; justify-content:space-between">
+                                        <p x-text="item.title"></p>
+                                        <h4 x-show="item.price" x-text="item.price"></h4>
+                                    </div>
+                                </li>
+                            </template>
+                        </ul>
+                    </div>
+                    <div x-show="formData.date">
+                        <img src="/storage/img/calendar.svg" />
+                        <div>
+                            <p x-text="formData.date"></p>
+                            <p x-text="formData.time.join(', ')"></p>
+                        </div>
+                    </div>
+
+                    <div>
+                        <img x-show="formData.address" src="/storage/img/location.svg" />
+                        <div>
+                            <p x-text="formData.address">56, f5, Santa Clara, CA Obama str. 75</p>
+                        </div>
+                    </div>
+                    <div>
+                        <div>
+                            <p>Subtotal</p>
+                            <h4 x-text="amount">$00.00</h4>
+                        </div>
+                        <div>
+                            <p>Tax Charge</p>
+
+                            <h4 x-text="tax">$0</h4>
+                        </div>
+                        <div>
+                            <p>Estimated Total</p>
+
+                            <h4 x-text="totalAmount">$457.33</h4>
+                        </div>
+                    </div>
+                </div>
+
+                <div
+                    style="width:fit-content;margin-left: auto;margin-right: auto; z-index: 9999; position: fixed; bottom:70px; left: 25%; right: 25%;">
+                    <button id="billBtn"
+                        style="padding: 2px 20px 2px 20px; gap: 20px; border-radius: 40px; color: #418DFF; backgound: #fff; font-size:24px; font-weight: 600; gap:20px; cursor:pointer; margin-bottom: 20px">
+                        <img src="/storage/img/card-ico.png" style="width:auto; align-self: center" alt="">
+                        <span x-text="totalAmount">200$</span>
+                        <span id="closeBillBtn" style="color: black; display:none;">&#x2715;</span>
+                    </button>
+                </div>
             </div>
+
+
         </div>
     </div>
 @endsection
@@ -168,6 +221,7 @@
                             value: '',
                             title: '',
                             price: '',
+                            prices: [],
                         },
                         wallType: {
                             value: '',
@@ -187,6 +241,7 @@
                         fullname: '',
                         phone: '',
                         email: '',
+                        recaptchaToken: '',
                     },
                     amount: '$00.00',
                     tax: '$0',
@@ -199,7 +254,7 @@
                     availableTimes: [],
                     toggleBill: false,
                     currentDate: new Date(),
-                    errorMessage: 'There is no department in your city.',
+                    errorMessage: "@staticText('error.notFoundZipCode.message')",
                     findCity() {
                         if (this.formData.zip_code) {
                             fetch(`/find-city?zip_code=${this.formData.zip_code}`, {
@@ -219,7 +274,7 @@
                                         this.error = true;
                                         return response.json().then(data => {
                                             this.errorMessage = data.message ||
-                                                'There is no department in your city.';
+                                                "@staticText('error.notFoundZipCode.message')";
                                         });
                                     }
                                 }).then(data => {
@@ -229,7 +284,7 @@
                                 })
                                 .catch(() => {
                                     this.error = true;
-                                    this.errorMessage = 'There is no department in your city.';
+                                    this.errorMessage = "@staticText('error.notFoundZipCode.message')";
                                     this.validZipCode = false;
                                 });
                         } else {
@@ -240,6 +295,15 @@
                     submitBooking() {
                         const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute(
                             'content');
+
+                        grecaptcha.ready(() => {
+                            grecaptcha.execute('6Lf9xHoqAAAAABlaBAGp-6dWQAgPAGQ8sDX6RoEo', {
+                                action: 'submit'
+                            }).then((token) => {
+                                this.formData.recaptchaToken = token
+                            });
+                        });
+
                         fetch(`/create-order`, {
                                 method: 'POST',
                                 headers: {
@@ -306,11 +370,14 @@
                         if (this.formData.tvSize.title) {
                             this.bill.push({
                                 title: this.formData.tvSize.title,
-                                price: '$' + this.formData.tvSize.price,
+                                price: '$' + Number(this.formData.tvSize.price),
                             });
                         }
 
                         if (this.formData.wallMount.title) {
+                            this.formData.wallMount.price = Number(this.formData.wallMount.prices[this
+                                .formData
+                                .tvSize.value ?? 1])
                             this.bill.push({
                                 title: this.formData.wallMount.title,
                                 price: '$' + this.formData.wallMount.price
@@ -398,7 +465,7 @@
                             this.findCity()
                         }
                     },
-                    updateAvailableTimes() {
+                    /* updateAvailableTimes() {
                         this.formData.time = [];
                         const selectedDateObj = new Date(this.selectedDate);
                         const currentHour = this.currentDate.getHours();
@@ -406,18 +473,60 @@
 
                         // Determine start hour based on the selected date
                         let startHour = this.isToday(selectedDateObj) ?
-                            Math.max(this.startHour, currentHour) :
+                            Math.max(this.startHour, currentHour + 1) :
                             this.startHour;
 
                         // Populate available times from start hour to 23:00 (end of day)
                         for (let hour = startHour; hour < 24; hour++) {
                             this.availableTimes.push(this.formatHour(hour));
                         }
+                    }, */
+                    updateAvailableTimes() {
+                        this.formData.time = [];
+
+                        // Create a Date object for the selected date
+                        const selectedDateObj = new Date(new Date(this.selectedDate).toLocaleString(
+                            "en-US", {
+                                timeZone: "America/Los_Angeles"
+                            }))
+
+                        // Get the current time in Los Angeles timezone
+                        const losAngelesTime = new Date(new Date().toLocaleString("en-US", {
+                            timeZone: "America/Los_Angeles"
+                        }));
+                        const currentHourInLosAngeles = losAngelesTime.getHours();
+                        const currentMinuteInLosAngeles = losAngelesTime.getMinutes();
+                        console.log(new Date().toLocaleString("en-US", {
+                            timeZone: "America/Los_Angeles"
+                        }));
+                        // Initialize the availableTimes array
+                        this.availableTimes = [];
+
+                        // Determine the starting hour based on whether the selected date is today
+                        let startHour = this.isToday(selectedDateObj) ?
+                            Math.max(this.startHour, currentHourInLosAngeles + (currentMinuteInLosAngeles >
+                                0 ? 1 : 0)) :
+                            this.startHour;
+
+                        // Populate available times from the start hour up to 23:00 (end of day)
+                        for (let hour = startHour; hour < 24; hour++) {
+                            // Add only future times
+                            if (hour > currentHourInLosAngeles || !this.isToday(selectedDateObj)) {
+                                this.availableTimes.push(this.formatHour(hour));
+                            }
+                        }
                     },
                     isToday(date) {
-                        return date.toDateString() === this.currentDate.toDateString();
+                        const currentDate = new Date(new Date().toLocaleString('en-US', {
+                            timeZone: 'America/Los_Angeles'
+                        }));
+                        return currentDate.toDateString() === date.toDateString();
                     },
-
+                    convertToLosAngelesTime(date) {
+                        return new Date(date).toLocaleString("en-US", {
+                            timeZone: "America/Los_Angeles"
+                        });
+                    },
                     formatHour(hour) {
                         const period = hour >= 12 ? 'pm' : 'am';
                         const formattedHour = hour % 12 || 12;

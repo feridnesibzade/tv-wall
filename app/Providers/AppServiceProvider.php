@@ -2,9 +2,11 @@
 
 namespace App\Providers;
 
+use App\Helpers\TranslateHelper;
 use App\Models\Country;
 use App\Models\Service;
 use App\Models\Setting;
+use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
@@ -42,6 +44,10 @@ class AppServiceProvider extends ServiceProvider
                 now()->addWeeks(1),
                 fn() => Country::with('cities:id,title,slug,country_id')->get()
             ));
+        });
+
+        Blade::directive('staticText', function ($expression) {
+            return TranslateHelper::staticText(str_replace('\'', '', $expression));
         });
     }
 }
