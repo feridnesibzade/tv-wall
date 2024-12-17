@@ -27,6 +27,3 @@
     <img class="slider-prev" src="img/slider-prev.png" alt="" />
     <img class="slider-next" src="img/slider-next.png" alt="" />
 </section>
-@push('footer')
-    <script></script>
-@endpush
