@@ -8,6 +8,7 @@
             <ul class="navigation">
                 <li><a href="/">Home</a></li>
                 <li><a href="/about">About</a></li>
+                <li><a href="/blogs">Blogs</a></li>
                 <li class="has__dropdown">
                     <a href="/services">Services</a>
                     <div class="dropdown__container">

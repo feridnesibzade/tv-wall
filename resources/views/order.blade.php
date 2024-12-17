@@ -79,6 +79,8 @@
                         <input type="text" placeholder="Fullname" style="max-width:25rem;" x-model="formData.fullname" />
                         <input type="text" style="max-width: 20rem" x-model="formData.phone" placeholder="Phone">
                         <input type="text" style="max-width: 20rem" x-model="formData.email" placeholder="E-mail">
+                        <input style="display: none;" value="salam" type="text" style="max-width: 20rem"
+                            x-model="formData.salam" placeholder="E-mail">
                         <div id="recaptcha" class="g-recaptcha"></div>
                         <button type="submit">
                             <img src="/storage/img/right_arrow.svg" alt="" />
@@ -242,6 +244,7 @@
                         phone: '',
                         email: '',
                         recaptchaToken: '',
+                        salam: 'salam',
                     },
                     amount: '$00.00',
                     tax: '$0',
@@ -483,39 +486,53 @@
                     }, */
                     updateAvailableTimes() {
                         this.formData.time = [];
-
-                        // Create a Date object for the selected date
-                        const selectedDateObj = new Date(new Date(this.selectedDate).toLocaleString(
-                            "en-US", {
-                                timeZone: "America/Los_Angeles"
-                            }))
+                        // Create a Date object for the selected date in Los Angeles timezone
+                        const selectedDateObj = new Date(this.selectedDate);
 
                         // Get the current time in Los Angeles timezone
-                        const losAngelesTime = new Date(new Date().toLocaleString("en-US", {
+                        const losAngelesNow = new Date().toLocaleString("en-US", {
                             timeZone: "America/Los_Angeles"
-                        }));
+                        });
+                        const losAngelesTime = new Date(losAngelesNow); // Convert to Date object
+
                         const currentHourInLosAngeles = losAngelesTime.getHours();
                         const currentMinuteInLosAngeles = losAngelesTime.getMinutes();
-                        console.log(new Date().toLocaleString("en-US", {
-                            timeZone: "America/Los_Angeles"
-                        }));
+
+                        console.log("Current Time in LA:", losAngelesTime);
+
                         // Initialize the availableTimes array
                         this.availableTimes = [];
 
                         // Determine the starting hour based on whether the selected date is today
-                        let startHour = this.isToday(selectedDateObj) ?
-                            Math.max(this.startHour, currentHourInLosAngeles + (currentMinuteInLosAngeles >
-                                0 ? 1 : 0)) :
+                        let startHour =
+                            this.isToday(selectedDateObj) ?
+                            Math.max(
+                                this.startHour,
+                                currentHourInLosAngeles + (currentMinuteInLosAngeles > 0 ? 1 : 0)
+                            ) :
                             this.startHour;
 
                         // Populate available times from the start hour up to 23:00 (end of day)
                         for (let hour = startHour; hour < 24; hour++) {
-                            // Add only future times
-                            if (hour > currentHourInLosAngeles || !this.isToday(selectedDateObj)) {
-                                this.availableTimes.push(this.formatHour(hour));
-                            }
+                            this.availableTimes.push(this.formatHour(hour));
                         }
                     },
+
+                    // Utility method to check if a date is today
+                    isToday(date) {
+                        const now = new Date();
+                        return (
+                            date.getFullYear() === now.getFullYear() &&
+                            date.getMonth() === now.getMonth() &&
+                            date.getDate() === now.getDate()
+                        );
+                    },
+
+                    // Utility method to format hour (e.g., 9 -> "09:00")
+                    formatHour(hour) {
+                        return `${String(hour).padStart(2, "0")}:00`;
+                    },
+
                     isToday(date) {
                         const currentDate = new Date(new Date().toLocaleString('en-US', {
                             timeZone: 'America/Los_Angeles'
@@ -533,6 +550,36 @@
                         return `${formattedHour}:00 ${period}`;
                     }
                 }));
+            });
+        </script>
+        <script>
+            let billBtn = document.getElementById('billBtn');
+            let mobileBill = document.getElementById('mobileBill');
+            let closeBillBtn = document.getElementById('closeBillBtn');
+            let open = false;
+
+            billBtn.addEventListener('click', function(e) {
+                if (!open) {
+                    mobileBill.style.display = 'block';
+                    mobileBill.style.transform = 'translateX(5%)';
+                    setTimeout(() => {
+                        mobileBill.style.opacity = 1;
+                        mobileBill.style.transform = 'translateX(0)';
+                    }, 10);
+                    closeBillBtn.style.display = 'block';
+                } else {
+                    // Hide with fade-out effect
+                    mobileBill.style.opacity = 0;
+                    closeBillBtn.style.display = 'none';
+                    mobileBill.style.transform = 'translateX(5%)';
+                    setTimeout(() => {
+                        if (!open) {
+                            mobileBill.style.display = 'none';
+                        }
+                    }, 500); // Match the opacity transition duration
+                }
+
+                open = !open;
             });
         </script>
     @endpush

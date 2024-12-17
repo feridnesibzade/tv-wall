@@ -7,6 +7,8 @@ Route::get('/', [StaticController::class, 'index'])->name('index');
 Route::get('/about', [StaticController::class, 'about'])->name('about');
 // Route::get('/services', [StaticController::class, 'services'])->name('index');
 Route::get('/services/{slug?}', [StaticController::class, 'services'])->name('services');
+Route::get('/blogs/{slug?}', [StaticController::class, 'blogs'])->name('blogs');
+Route::get('/ajax/blogs', [StaticController::class, 'ajaxBlogs'])->name('ajaxBlogs');
 Route::get('/projects/{slug?}', [StaticController::class, 'projects'])->name('projects');
 Route::get('/locations/{slug?}', [StaticController::class, 'locations'])->name('locations');
 Route::get('/book', [StaticController::class, 'order'])->name('book');

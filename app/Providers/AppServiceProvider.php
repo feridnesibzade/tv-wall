@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Helpers\TranslateHelper;
 use App\Models\Country;
+use App\Models\Page;
 use App\Models\Service;
 use App\Models\Setting;
 use Illuminate\Support\Facades\Blade;
@@ -25,7 +26,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        View::composer(['includes.*', 'order'], function ($view) {
+        View::composer(['includes.*', 'components.sections.call-us', 'order'], function ($view) {
             $view->with('settings', cache()->remember(
                 'settings',
                 now()->addWeeks(1),
@@ -42,7 +43,15 @@ class AppServiceProvider extends ServiceProvider
             $view->with('locations', cache()->remember(
                 'locations',
                 now()->addWeeks(1),
-                fn() => Country::with('cities:id,title,slug,country_id')->get()
+                fn() => Country::with('cities:id,title,slug,country_id')->take(3)->get()
+            ));
+        });
+
+        View::composer('*', function ($view) {
+            $view->with('page', cache()->remember(
+                'page.' . request()->path(),
+                now()->addWeeks(1),
+                fn() => Page::where('url', request()->path())->first()
             ));
         });
 

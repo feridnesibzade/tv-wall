@@ -29,8 +29,7 @@ class BookRequest extends FormRequest
             'response' => request()->recaptchaToken
         ])->json();
 
-
-        if (!$response['success']) {
+        if (!$response['success'] || $response['score'] < 0.5) {
             throw ValidationException::withMessages([
                 'recaptcha' => 'reCAPTCHA verification failed.',
             ]);

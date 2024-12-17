@@ -10,42 +10,14 @@
         </div>
     </div>
 </footer>
-<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+{{-- <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script> --}}
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
 <script src="/assets/js/app.js"></script>
 <script src="https://www.google.com/recaptcha/api.js?render=6Lf9xHoqAAAAABlaBAGp-6dWQAgPAGQ8sDX6RoEo"></script>
 <script>
     Fancybox.bind("[data-fancybox]", {
         // Your custom options
-    });
-</script>
-<script>
-    let billBtn = document.getElementById('billBtn');
-    let mobileBill = document.getElementById('mobileBill');
-    let closeBillBtn = document.getElementById('closeBillBtn');
-    let open = false;
-
-    billBtn.addEventListener('click', function(e) {
-        if (!open) {
-            mobileBill.style.display = 'block';
-            mobileBill.style.transform = 'translateX(5%)';
-            setTimeout(() => {
-                mobileBill.style.opacity = 1;
-                mobileBill.style.transform = 'translateX(0)';
-            }, 10);
-            closeBillBtn.style.display = 'block';
-        } else {
-            // Hide with fade-out effect
-            mobileBill.style.opacity = 0;
-            closeBillBtn.style.display = 'none';
-            mobileBill.style.transform = 'translateX(5%)';
-            setTimeout(() => {
-                if (!open) {
-                    mobileBill.style.display = 'none';
-                }
-            }, 500); // Match the opacity transition duration
-        }
-
-        open = !open;
     });
 </script>
 

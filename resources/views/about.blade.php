@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.app', ['title' => $data['about']->title ?? 'About', 'description' => strip_tags($data['about']->description) ?? 'About'])
 
 @section('content')
     <section class="about">

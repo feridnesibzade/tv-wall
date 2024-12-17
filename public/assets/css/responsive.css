@@ -413,3 +413,52 @@
         display: flex;
     }
 }
+
+@media (max-width: 768px) {
+    .blog__body {
+        grid-template-columns: repeat(2, 1fr);
+        /* Switch to two columns on smaller screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .blog__body {
+        grid-template-columns: 1fr;
+        /* Switch to one column on mobile devices */
+    }
+}
+
+
+
+.responsive-phone {
+    font-size: 30px;
+    /* Default for small screens */
+    font-weight: 250;
+    text-align: center;
+}
+
+.tel-icon {
+    width: 40px;
+}
+
+@media (min-width: 768px) {
+    .responsive-phone {
+        font-size: 30px;
+        /* Medium screens (tablets) */
+    }
+
+    .tel-icon {
+        width: 40px;
+    }
+}
+
+@media (min-width: 1024px) {
+    .responsive-phone {
+        font-size: 80px;
+        /* Large screens (desktops) */
+    }
+
+    .tel-icon {
+        width: 70px;
+    }
+}

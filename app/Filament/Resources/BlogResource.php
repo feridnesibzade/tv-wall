@@ -2,8 +2,8 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\ServicesResource\Pages;
-use App\Models\Service;
+use App\Filament\Resources\BlogResource\Pages;
+use App\Models\Blog;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\TextInput;
@@ -13,33 +13,29 @@ use Filament\Tables;
 use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
+use Illuminate\Support\Str;
 
-class ServicesResource extends Resource
+class BlogResource extends Resource
 {
-    protected static ?string $model = Service::class;
+    protected static ?string $model = Blog::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
-
-    protected static ?string $navigationGroup = 'Pages';
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                TextInput::make('title')->reactive()->required() // Ensures the field is reactive for live slug generation
-                    ->afterStateUpdated(fn($state, callable $set) => $set('slug', \Str::slug($state))), // Updates the slug based on title
-
-                TextInput::make('slug')
-                    ->required()
-                    ->label('Slug')
-                    // ->readOnly(true)
-                    ->unique(ignoreRecord: true),
-
-                FileUpload::make('image')
-                    ->image()
-                    ->disk('public')
-                    ->directory('services'),
-                RichEditor::make('text')->columnSpanFull(),
+                TextInput::make('title')->required()
+                    ->live()
+                    ->afterStateUpdated(function ($state, callable $set) {
+                        $slug = Str::slug($state);
+                        $set('slug', $slug);
+                        info('Slug generated: ' . $slug); // Debugging
+                    }),
+                TextInput::make('slug')->required()->unique(ignoreRecord: true),
+                FileUpload::make('cover')->image()->required(),
+                FileUpload::make('images')->image()->multiple(),
+                RichEditor::make('description')->required()->columnSpan(2),
             ]);
     }
 
@@ -47,9 +43,8 @@ class ServicesResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('id'),
                 TextColumn::make('title'),
-                ImageColumn::make('image'),
+                ImageColumn::make('cover')
             ])
             ->filters([
                 //
@@ -68,7 +63,7 @@ class ServicesResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ManageServices::route('/'),
+            'index' => Pages\ManageBlogs::route('/'),
         ];
     }
 }

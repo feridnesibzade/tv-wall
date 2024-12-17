@@ -7,6 +7,7 @@ use App\Mail\OrderMail;
 use App\Models\About;
 use App\Models\AboutCity;
 use App\Models\BestTypeOfMount;
+use App\Models\Blog;
 use App\Models\Book;
 use App\Models\City;
 use App\Models\Country;
@@ -25,11 +26,15 @@ use App\Models\WallMount;
 use App\Models\WallType;
 use App\Models\WeSpeacial;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\RateLimiter;
 
 class StaticController extends Controller
 {
     public function index()
     {
+
+
+
         $data = [];
         $data['hero'] = Hero::first();
         $data['projects'] = Project::first();
@@ -38,8 +43,11 @@ class StaticController extends Controller
         $data['partners'] = Partner::all();
         $data['weSpecial'] = WeSpeacial::first();
         $data['schedule'] = Schedule::first();
-        $data['feedback'] = Feedback::all();
+        $data['feedback'] = cache()->remember('reviews', now()->addWeek(), function () {
+            return $this->getReviews();
+        });
 
+        // dd($data['feedback']);
         return view('index', compact('data'));
     }
 
@@ -64,6 +72,19 @@ class StaticController extends Controller
         }
 
         return view('services', compact('data'));
+    }
+
+    public function blogs($slug = null)
+    {
+        $data['blogs'] = Blog::latest()->take(10)->get();
+
+        if ($slug) {
+            // dd($data);
+            $data['blog'] = Blog::where('slug', $slug)->firstOrFail();
+            return view('blog', compact('data'));
+        }
+
+        return view('blogs', compact('data'));
     }
 
     public function projects($slug = null)
@@ -116,7 +137,6 @@ class StaticController extends Controller
 
     public function createOrder(BookRequest $request)
     {
-        // dd($request->all());
         try {
             $order = Book::create([
                 'zip_code' => request()->zip_code,
@@ -153,5 +173,34 @@ class StaticController extends Controller
     public function orderSuccess()
     {
         return view('success');
+    }
+
+    public function ajaxBlogs()
+    {
+        $data = Blog::simplePaginate(6);
+        return response()->json([
+            'data' => $data->map(function ($r) {
+                return array_merge(
+                    $r->toArray(),
+                    [
+                        'shortDescription' => substr(strip_tags($r->description), 0, 60) . '...',
+                        'diffForHumans' => $r->created_at->diffForHumans(),
+                    ]
+                );
+            }),
+            'current_page' => $data->currentPage(),
+            'hasMore' => $data->hasMorePages()
+        ]);
+    }
+
+    public function getReviews()
+    {
+        $url = "https://maps.googleapis.com/maps/api/place/details/json?place_id=ChIJH5Ie3aUUAk0RwbeaPrU-wQA&key=AIzaSyAcNtAcUVJLBM6mG7St4do9y0TTV8pE_C8";
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+        $response = curl_exec($ch);
+        return json_decode($response)->result->reviews;
     }
 }
