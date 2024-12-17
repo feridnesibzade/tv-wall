@@ -408,7 +408,6 @@
                                     price: '$' + element.price,
                                 });
                             });
-
                         }
 
                         this.amount =

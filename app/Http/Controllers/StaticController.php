@@ -33,8 +33,6 @@ class StaticController extends Controller
     public function index()
     {
 
-
-
         $data = [];
         $data['hero'] = Hero::first();
         $data['projects'] = Project::first();
